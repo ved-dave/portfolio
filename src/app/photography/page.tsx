@@ -25,6 +25,15 @@ export default function PhotographyPage() {
                   With a portfolio that reflects my passion for love, laughter, and adventure, I'm dedicated to delivering stunning, timeless photographs that you'll treasure for a lifetime.
                 </p>
               </div>
+
+              {/* Contact me Section */}
+              <div className="mb-12">
+                <h3 className="text-xl font-semibold text-white mb-4">Book:</h3>
+                <p className="text-gray-300 leading-relaxed mb-4">
+                  I'm always looking for new opportunities to work with people and create stunning, timeless memories.
+                  If you're interested in working with me, please reach out to me on instagram at <a href="https://www.instagram.com/daves.shoots/" className="text-primary hover:underline">@daves.shoots</a>.
+                </p>
+              </div>
             </div>
           </div>
         </div>

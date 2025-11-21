@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Mail, Calendar, MapPin, Linkedin, Twitter, Github, Instagram, X, Menu } from "lucide-react";
+import { Mail, Calendar, MapPin, Linkedin, Twitter, Github, Instagram, X, Menu, Download } from "lucide-react";
 
 export default function Sidebar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);

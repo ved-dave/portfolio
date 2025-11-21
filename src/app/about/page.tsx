@@ -33,16 +33,16 @@ export default function AboutPage() {
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] py-8 px-4 lg:px-8">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-6">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-6 lg:h-[calc(100vh-4rem)]">
         <Sidebar />
 
-        <div className="flex-1">
-          <div className="bg-[#1e1e1f] border border-[#383838] rounded-3xl overflow-hidden">
+        <div className="flex-1 lg:h-full">
+          <div className="bg-[#1e1e1f] border border-[#383838] rounded-3xl overflow-hidden flex flex-col h-full">
             <Navigation />
 
-            <div className="p-8 space-y-12">
+            <div className="flex-1 overflow-y-auto p-8 space-y-12">
               <div>
-                <h2 className="text-3xl font-semibold text-white mb-8">About me</h2>
+                <h2 className="text-3xl font-semibold text-white mb-8">Hi!</h2>
 
                 <div className="text-2xl mb-12">
                   <span className="text-white">I am a </span>
@@ -50,12 +50,23 @@ export default function AboutPage() {
                   <span className="text-primary animate-pulse">|</span>
                 </div>
               </div>
+              
+              {/* About me */}
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-6">About me</h3>
+                <p className="text-sm text-gray-300 leading-relaxed">
+                  My name is Ved and I'm a software engineer and photographer based in Seattle.
+                  I have a strong background in backend development, distributed systems, and maintaining SaaS applications.
+                  Please explore my portfolio to learn more about me and my work :)
+                </p>
+              </div>
 
               {/* What I'm Doing */}
               <div>
                 <h3 className="text-xl font-semibold text-white mb-6">What i'm doing</h3>
-
+                
                 <div className="grid md:grid-cols-2 gap-4">
+                  {/* Developing */}
                   <div className="bg-[#2b2b2c] border border-[#383838] rounded-2xl p-6 flex gap-4">
                     <img src="https://ext.same-assets.com/1816051347/2980190298.svg" alt="" className="w-12 h-12" />
                     <div>
@@ -66,6 +77,7 @@ export default function AboutPage() {
                     </div>
                   </div>
                   
+                  {/* Dining */}
                   <div className="bg-[#2b2b2c] border border-[#383838] rounded-2xl p-6 flex gap-4">
                     <img src="https://ext.same-assets.com/1816051347/2864867971.svg" alt="" className="w-12 h-12" />
                     <div>
@@ -76,22 +88,24 @@ export default function AboutPage() {
                     </div>
                   </div>
 
-                  <div className="bg-[#2b2b2c] border border-[#383838] rounded-2xl p-6 flex gap-4">
-                    <img src="https://ext.same-assets.com/1816051347/2026831275.svg" alt="" className="w-12 h-12" />
-                    <div>
-                      <h4 className="text-lg font-medium text-white mb-2">Travel</h4>
-                      <p className="text-sm text-gray-400">
-                        Exploring every corner of our beautiful planet.
-                      </p>
-                    </div>
-                  </div>
-
+                  {/* Photography */}
                   <div className="bg-[#2b2b2c] border border-[#383838] rounded-2xl p-6 flex gap-4">
                     <img src="https://ext.same-assets.com/1816051347/3776952347.svg" alt="" className="w-12 h-12" />
                     <div>
                       <h4 className="text-lg font-medium text-white mb-2">Photography</h4>
                       <p className="text-sm text-gray-400">
                         Narrating stories and emotions through the lens.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Travel */}
+                  <div className="bg-[#2b2b2c] border border-[#383838] rounded-2xl p-6 flex gap-4">
+                    <img src="https://ext.same-assets.com/1816051347/2026831275.svg" alt="" className="w-12 h-12" />
+                    <div>
+                      <h4 className="text-lg font-medium text-white mb-2">Travel</h4>
+                      <p className="text-sm text-gray-400">
+                        Exploring every corner of our beautiful planet.
                       </p>
                     </div>
                   </div>

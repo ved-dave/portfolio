@@ -30,7 +30,7 @@ export default function PhotosPage() {
             <Navigation />
 
             <div className="p-8">
-              <h2 className="text-3xl font-semibold text-white mb-8">Photos</h2>
+              <h2 className="text-3xl font-semibold text-white mb-8">Photo Gallery</h2>
 
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {photos.map((photo, index) => (
