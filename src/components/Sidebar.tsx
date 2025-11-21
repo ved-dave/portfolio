@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useId } from "react";
-import { Mail, Calendar, MapPin, Linkedin, Github, Instagram, X, Menu, ChevronDown } from "lucide-react";
+import { Mail, Calendar, MapPin, Linkedin, Github, Instagram, X, Menu, ChevronDown, User } from "lucide-react";
 
 const THEME_OPTIONS = [
   { name: "Red", color: "#FF2020" },
@@ -121,7 +121,7 @@ export default function Sidebar() {
         onClick={() => setSidebarOpen(!sidebarOpen)}
         className="lg:hidden fixed top-4 right-4 z-50 w-12 h-12 bg-[#1e1e1f] border border-[#383838] rounded-xl flex items-center justify-center"
       >
-        {sidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        {sidebarOpen ? <X className="w-6 h-6" /> : <User className="w-6 h-6" />}
       </button>
 
       {/* Sidebar */}

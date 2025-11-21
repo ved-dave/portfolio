@@ -23,6 +23,7 @@ export default function PhotographyPage() {
 
                 <p className="text-gray-300 leading-relaxed">
                   With a portfolio that reflects my passion for love, laughter, and adventure, I'm dedicated to delivering stunning, timeless photographs that you'll treasure for a lifetime.
+                  Check out my <a href="/gallery" className="text-primary hover:underline">gallery</a> to see some of my work.
                 </p>
               </div>
 
