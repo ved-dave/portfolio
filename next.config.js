@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
   allowedDevOrigins: ["*.preview.same-app.com"],
   images: {
     unoptimized: true,
