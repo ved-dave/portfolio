@@ -199,70 +199,62 @@ export default function PhotosPage() {
       {/* Full-size Image Modal */}
       {selectedPhoto && (
         <div
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-black/90 overflow-hidden"
           onClick={() => setSelectedPhoto(null)}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
           <button
-            onClick={() => setSelectedPhoto(null)}
+            onClick={(e) => { e.stopPropagation(); setSelectedPhoto(null); }}
             className="absolute top-4 right-4 z-10 w-10 h-10 bg-[#1e1e1f] border border-[#383838] rounded-xl flex items-center justify-center hover:bg-[#2b2b2c] transition-colors"
             aria-label="Close image"
           >
             <X className="w-6 h-6 text-white" />
           </button>
-          <div
-            className="relative max-w-[90vw] max-h-[90vh] overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-            onTouchStart={onTouchStart}
-            onTouchMove={onTouchMove}
-            onTouchEnd={onTouchEnd}
-          >
-            <div className="relative w-full h-full flex">
-              {/* Current photo */}
-              <div
-                className="flex-shrink-0 w-full h-full transition-transform duration-0"
-                style={{
-                  transform: swipeOffset !== 0 ? `translateX(${swipeOffset}px)` : 'translateX(0)',
-                }}
-              >
-                <img
-                  src={selectedPhoto.src}
-                  alt={selectedPhoto.name}
-                  className="max-w-full max-h-[90vh] object-contain rounded-lg touch-none w-full h-full"
-                />
-              </div>
 
-              {/* Next/Previous photo sliding in */}
-              {swipeOffset !== 0 && (
-                <>
-                  {swipeOffset < 0 && getNextPhoto() && (
-                    <div
-                      className="flex-shrink-0 w-full h-full absolute inset-0 transition-transform duration-0"
-                      style={{
-                        transform: `translateX(${100 + swipeOffset}%)`,
-                      }}
-                    >
-                      <img
-                        src={getNextPhoto()!.src}
-                        alt={getNextPhoto()!.name}
-                        className="max-w-full max-h-[90vh] object-contain rounded-lg touch-none w-full h-full"
-                      />
-                    </div>
-                  )}
-                  {swipeOffset > 0 && getPrevPhoto() && (
-                    <div
-                      className="flex-shrink-0 w-full h-full absolute inset-0 transition-transform duration-0"
-                      style={{
-                        transform: `translateX(${-100 + swipeOffset}%)`,
-                      }}
-                    >
-                      <img
-                        src={getPrevPhoto()!.src}
-                        alt={getPrevPhoto()!.name}
-                        className="max-w-full max-h-[90vh] object-contain rounded-lg touch-none w-full h-full"
-                      />
-                    </div>
-                  )}
-                </>
+          {/* 3-panel strip: [prev][current][next], strip is 300vw, offset so current is visible */}
+          <div
+            className="absolute top-0 flex h-full"
+            style={{
+              width: "300vw",
+              left: "-100vw",
+              transform: `translateX(${swipeOffset}px)`,
+              touchAction: "none",
+            }}
+          >
+            {/* Previous */}
+            <div className="w-screen h-full flex items-center justify-center p-4">
+              {getPrevPhoto() && (
+                <img
+                  src={getPrevPhoto()!.src}
+                  alt={getPrevPhoto()!.name}
+                  className="max-w-full max-h-[90vh] object-contain rounded-lg select-none"
+                  onClick={(e) => e.stopPropagation()}
+                  draggable={false}
+                />
+              )}
+            </div>
+            {/* Current */}
+            <div className="w-screen h-full flex items-center justify-center p-4">
+              <img
+                src={selectedPhoto.src}
+                alt={selectedPhoto.name}
+                className="max-w-full max-h-[90vh] object-contain rounded-lg select-none"
+                onClick={(e) => e.stopPropagation()}
+                draggable={false}
+              />
+            </div>
+            {/* Next */}
+            <div className="w-screen h-full flex items-center justify-center p-4">
+              {getNextPhoto() && (
+                <img
+                  src={getNextPhoto()!.src}
+                  alt={getNextPhoto()!.name}
+                  className="max-w-full max-h-[90vh] object-contain rounded-lg select-none"
+                  onClick={(e) => e.stopPropagation()}
+                  draggable={false}
+                />
               )}
             </div>
           </div>

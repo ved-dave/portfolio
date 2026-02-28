@@ -62,7 +62,12 @@ function hexToHsl(hex: string) {
 export default function Sidebar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [currentDate, setCurrentDate] = useState("");
-  const [activeTheme, setActiveTheme] = useState<string>(THEME_OPTIONS[0].color);
+  const [activeTheme, setActiveTheme] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("portfolio-theme") || THEME_OPTIONS[0].color;
+    }
+    return THEME_OPTIONS[0].color;
+  });
   const [customColor, setCustomColor] = useState("#FFFFFF");
   const [themePickerOpen, setThemePickerOpen] = useState(false);
   const customInputId = useId();
@@ -88,6 +93,7 @@ export default function Sidebar() {
     root.style.setProperty("--primary", hslColor);
     root.style.setProperty("--accent", hslColor);
     root.style.setProperty("--ring", hslColor);
+    localStorage.setItem("portfolio-theme", activeTheme);
   }, [activeTheme]);
 
   const handleThemeSelect = (value: string) => {
@@ -133,9 +139,9 @@ export default function Sidebar() {
         <div className="mb-6">
           <div className="flex items-start gap-4">
             <img
-              src="https://ext.same-assets.com/1816051347/4031630246.png"
+              src="/profile.jpg"
               alt="Ved Dave"
-              className="w-20 h-20 rounded-3xl"
+              className="w-20 h-20 rounded-full object-cover"
             />
             <div className="flex-1">
               <h1 className="text-2xl font-semibold text-white mb-2">Ved Dave</h1>
@@ -205,7 +211,7 @@ export default function Sidebar() {
                 <Github className="w-5 h-5 text-gray-300" />
               </a>
               <a
-                href="https://www.instagram.com/daves.shoots/"
+                href="https://www.instagram.com/ved.dave/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-[#2b2b2c] rounded-xl flex items-center justify-center hover:bg-[#383838] transition-colors"
@@ -251,8 +257,8 @@ export default function Sidebar() {
                   </button>
                 ))}
               </div>
-
-              <div className="flex items-center gap-4">
+                
+              {false /* Custom theme picker disabled for now */&& <div className="flex items-center gap-4">
                 <button
                   type="button"
                   onClick={() => isCustomValid && setActiveTheme(normalizedCustomColor)}
@@ -283,7 +289,7 @@ export default function Sidebar() {
                     maxLength={7}
                   />
                 </div>
-              </div>
+              </div>}
             </div>
           )}
         </div>
