@@ -4,10 +4,10 @@ import { useState, useEffect, useId } from "react";
 import { Mail, Calendar, MapPin, Linkedin, Github, Instagram, X, Menu, ChevronDown, User } from "lucide-react";
 
 const THEME_OPTIONS = [
+  { name: "Yellow", color: "#F6FF00" },
   { name: "Red", color: "#FF2020" },
   { name: "Green", color: "#20C20E" },
   { name: "Blue", color: "#0043FF" },
-  { name: "Yellow", color: "#F6FF00" },
   { name: "Purple", color: "#AC47FF" },
   { name: "Orange", color: "#FFA845" },
   { name: "Violet", color: "#545FED" },
