@@ -3,6 +3,10 @@
 import { useState, useEffect, useMemo } from "react";
 import Sidebar from "@/components/Sidebar";
 import Navigation from "@/components/Navigation";
+import IconDev from "@/components/icons/IconDev";
+import IconFood from "@/components/icons/IconFood";
+import IconPhoto from "@/components/icons/IconPhoto";
+import IconTravel from "@/components/icons/IconTravel";
 
 export default function AboutPage() {
   const [typingText, setTypingText] = useState("Foo");
@@ -68,7 +72,7 @@ export default function AboutPage() {
                 <div className="grid md:grid-cols-2 gap-4">
                   {/* Developing */}
                   <div className="bg-[#2b2b2c] border border-[#383838] rounded-2xl p-6 flex gap-4">
-                    <img src="https://ext.same-assets.com/1816051347/2980190298.svg" alt="" className="w-12 h-12" />
+                    <IconDev className="w-12 h-12 text-primary flex-shrink-0" />
                     <div>
                       <h4 className="text-lg font-medium text-white mb-2">Developing</h4>
                       <p className="text-sm text-gray-400">
@@ -79,7 +83,7 @@ export default function AboutPage() {
                   
                   {/* Dining */}
                   <div className="bg-[#2b2b2c] border border-[#383838] rounded-2xl p-6 flex gap-4">
-                    <img src="https://ext.same-assets.com/1816051347/2864867971.svg" alt="" className="w-12 h-12" />
+                    <IconFood className="w-12 h-12 text-primary flex-shrink-0" />
                     <div>
                       <h4 className="text-lg font-medium text-white mb-2">Dining</h4>
                       <p className="text-sm text-gray-400">
@@ -90,7 +94,7 @@ export default function AboutPage() {
 
                   {/* Photography */}
                   <div className="bg-[#2b2b2c] border border-[#383838] rounded-2xl p-6 flex gap-4">
-                    <img src="https://ext.same-assets.com/1816051347/3776952347.svg" alt="" className="w-12 h-12" />
+                    <IconPhoto className="w-12 h-12 text-primary flex-shrink-0" />
                     <div>
                       <h4 className="text-lg font-medium text-white mb-2">Photography</h4>
                       <p className="text-sm text-gray-400">
@@ -101,7 +105,7 @@ export default function AboutPage() {
 
                   {/* Travel */}
                   <div className="bg-[#2b2b2c] border border-[#383838] rounded-2xl p-6 flex gap-4">
-                    <img src="https://ext.same-assets.com/1816051347/2026831275.svg" alt="" className="w-12 h-12" />
+                    <IconTravel className="w-12 h-12 text-primary flex-shrink-0" />
                     <div>
                       <h4 className="text-lg font-medium text-white mb-2">Travel</h4>
                       <p className="text-sm text-gray-400">
