@@ -34,9 +34,12 @@ export default function PhotosPage() {
           originals.map(async (itemRef) => {
             const fullUrl = await getDownloadURL(itemRef);
 
-            // Thumbnail is stored at Gallery/thumbnails/<filename> by the Resize Images extension
+            // Thumbnail is stored at Gallery/thumbnails/<basename>_400x400.<ext>
+            const dotIndex = itemRef.name.lastIndexOf(".");
+            const thumbName =
+              itemRef.name.slice(0, dotIndex) + "_400x400" + itemRef.name.slice(dotIndex);
             const thumbUrl = await getDownloadURL(
-              ref(storage, `Gallery/thumbnails/${itemRef.name}`)
+              ref(storage, `Gallery/thumbnails/${thumbName}`)
             ).catch(() => fullUrl); // fall back to full-size if thumbnail doesn't exist yet
 
             return new Promise<PhotoData>((resolve) => {

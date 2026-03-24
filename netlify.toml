@@ -2,7 +2,8 @@
   remote_images = ["https://source.unsplash.com/.*", "https://images.unsplash.com/.*", "https://ext.same-assets.com/.*", "https://ugc.same-assets.com/.*"]
 
 [build]
-  command = "bun run build"
+  base = "website"
+  command = "npm run build"
   publish = ".next"
 
 [build.environment]
