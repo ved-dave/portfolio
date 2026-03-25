@@ -1,167 +1,158 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { ref, listAll, getDownloadURL } from "firebase/storage";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { ref, listAll, getMetadata } from "firebase/storage";
 import { storage } from "@/lib/firebase";
 import Sidebar from "@/components/Sidebar";
 import Navigation from "@/components/Navigation";
 import { X } from "lucide-react";
 
+const PAGE_SIZE = 9;
+const BUCKET = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET!;
+
 interface PhotoData {
-  src: string;      // full-size URL — loaded only when lightbox opens
-  thumbSrc: string; // 400x400 thumbnail URL — used in the grid
   name: string;
-  aspectRatio: number;
+  thumbSrc: string;
+  fullPath: string;
+  width: number | null;
+  height: number | null;
+}
+
+function buildUrl(path: string) {
+  return `https://firebasestorage.googleapis.com/v0/b/${BUCKET}/o/${encodeURIComponent(path)}?alt=media`;
 }
 
 export default function PhotosPage() {
-  const [photos, setPhotos] = useState<PhotoData[]>([]);
+  const [allPhotos, setAllPhotos] = useState<PhotoData[]>([]);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [loading, setLoading] = useState(true);
+  const sentinelRef = useRef<HTMLDivElement>(null);
+
   const [selectedPhoto, setSelectedPhoto] = useState<PhotoData | null>(null);
+  const [fullSrc, setFullSrc] = useState<string | null>(null);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchCurrent, setTouchCurrent] = useState<number | null>(null);
   const [swipeOffset, setSwipeOffset] = useState(0);
 
+  // Fetch all photo metadata once on mount
   useEffect(() => {
-    const loadImages = async () => {
-      try {
-        const galleryRef = ref(storage, "Gallery/");
-        const result = await listAll(galleryRef);
+    async function load() {
+      const galleryRef = ref(storage, "Gallery/");
+      const { items } = await listAll(galleryRef);
 
-        // Only process original images (files directly in Gallery/, not subfolders)
-        const originals = result.items;
+      const photos = await Promise.all(
+        items.map(async (itemRef) => {
+          const meta = await getMetadata(itemRef);
+          const name = itemRef.name;
+          const dot = name.lastIndexOf(".");
+          const thumbName =
+            dot === -1 ? name + "_400x400" : name.slice(0, dot) + "_400x400" + name.slice(dot);
 
-        const photoData: PhotoData[] = await Promise.all(
-          originals.map(async (itemRef) => {
-            const fullUrl = await getDownloadURL(itemRef);
+          return {
+            name,
+            thumbSrc: buildUrl(`Gallery/thumbnails/${thumbName}`),
+            fullPath: itemRef.fullPath,
+            width: meta.customMetadata?.width ? Number(meta.customMetadata.width) : null,
+            height: meta.customMetadata?.height ? Number(meta.customMetadata.height) : null,
+          };
+        })
+      );
 
-            // Thumbnail is stored at Gallery/thumbnails/<basename>_400x400.<ext>
-            const dotIndex = itemRef.name.lastIndexOf(".");
-            const thumbName =
-              itemRef.name.slice(0, dotIndex) + "_400x400" + itemRef.name.slice(dotIndex);
-            const thumbUrl = await getDownloadURL(
-              ref(storage, `Gallery/thumbnails/${thumbName}`)
-            ).catch(() => fullUrl); // fall back to full-size if thumbnail doesn't exist yet
-
-            return new Promise<PhotoData>((resolve) => {
-              const img = new window.Image();
-              img.onload = () => {
-                resolve({ src: fullUrl, thumbSrc: thumbUrl, name: itemRef.name, aspectRatio: img.width / img.height });
-              };
-              img.onerror = () => {
-                resolve({ src: fullUrl, thumbSrc: thumbUrl, name: itemRef.name, aspectRatio: 4 / 3 });
-              };
-              img.src = thumbUrl;
-            });
-          })
-        );
-
-        setPhotos(photoData);
-      } catch (error) {
-        console.error("Failed to load gallery images from Firebase:", error);
-      }
-    };
-
-    loadImages();
-  }, []);
-
-  // Navigate to next/previous photo
-  const navigatePhoto = useCallback((direction: "prev" | "next") => {
-    if (!selectedPhoto) return;
-    const currentIndex = photos.findIndex((p) => p.name === selectedPhoto.name);
-    if (currentIndex === -1) return;
-
-    let newIndex: number;
-    if (direction === "prev") {
-      newIndex = currentIndex > 0 ? currentIndex - 1 : photos.length - 1;
-    } else {
-      newIndex = currentIndex < photos.length - 1 ? currentIndex + 1 : 0;
+      setAllPhotos(photos);
+      setLoading(false);
     }
 
-    setSelectedPhoto(photos[newIndex]);
-  }, [selectedPhoto, photos]);
+    load().catch((err) => {
+      console.error("Failed to load gallery:", err);
+      setLoading(false);
+    });
+  }, []);
 
-  // Keyboard navigation for lightbox
+  // Virtual infinite scroll — no network, just reveals more already-fetched photos
+  useEffect(() => {
+    if (!sentinelRef.current || visibleCount >= allPhotos.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) setVisibleCount((c) => c + PAGE_SIZE);
+      },
+      { rootMargin: "200px" }
+    );
+    observer.observe(sentinelRef.current);
+    return () => observer.disconnect();
+  }, [visibleCount, allPhotos.length]);
+
+  // Open lightbox — start loading full-size image immediately
+  const openPhoto = useCallback((photo: PhotoData) => {
+    setSelectedPhoto(photo);
+    setFullSrc(null);
+    const src = buildUrl(photo.fullPath);
+    const img = new Image();
+    img.src = src;
+    img.onload = () => setFullSrc(src);
+  }, []);
+
+  const getCurrentIndex = useCallback(
+    () => (selectedPhoto ? allPhotos.findIndex((p) => p.name === selectedPhoto.name) : -1),
+    [selectedPhoto, allPhotos]
+  );
+
+  const getAdjacentPhoto = useCallback(
+    (dir: "prev" | "next") => {
+      const i = getCurrentIndex();
+      if (i === -1) return null;
+      const next = dir === "prev" ? (i > 0 ? i - 1 : allPhotos.length - 1) : (i < allPhotos.length - 1 ? i + 1 : 0);
+      return allPhotos[next];
+    },
+    [getCurrentIndex, allPhotos]
+  );
+
+  const navigatePhoto = useCallback(
+    (dir: "prev" | "next") => {
+      const next = getAdjacentPhoto(dir);
+      if (next) openPhoto(next);
+    },
+    [getAdjacentPhoto, openPhoto]
+  );
+
+  // Keyboard navigation
   useEffect(() => {
     if (!selectedPhoto) return;
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setSelectedPhoto(null);
-        return;
-      }
-
-      if (event.key === "ArrowLeft") {
-        navigatePhoto("prev");
-      } else if (event.key === "ArrowRight") {
-        navigatePhoto("next");
-      }
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedPhoto(null);
+      else if (e.key === "ArrowLeft") navigatePhoto("prev");
+      else if (e.key === "ArrowRight") navigatePhoto("next");
     };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [selectedPhoto, navigatePhoto]);
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [selectedPhoto, photos]);
-
-  // Touch handlers for swipe gestures
-  const minSwipeDistance = 50;
-
-  const getCurrentIndex = useCallback(() => {
-    if (!selectedPhoto) return -1;
-    return photos.findIndex((p) => p.name === selectedPhoto.name);
-  }, [selectedPhoto, photos]);
-
-  const getNextPhoto = useCallback(() => {
-    const currentIndex = getCurrentIndex();
-    if (currentIndex === -1) return null;
-    const nextIndex = currentIndex < photos.length - 1 ? currentIndex + 1 : 0;
-    return photos[nextIndex];
-  }, [getCurrentIndex, photos]);
-
-  const getPrevPhoto = useCallback(() => {
-    const currentIndex = getCurrentIndex();
-    if (currentIndex === -1) return null;
-    const prevIndex = currentIndex > 0 ? currentIndex - 1 : photos.length - 1;
-    return photos[prevIndex];
-  }, [getCurrentIndex, photos]);
-
+  // Touch swipe
   const onTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX);
     setTouchCurrent(e.targetTouches[0].clientX);
     setSwipeOffset(0);
   };
-
   const onTouchMove = (e: React.TouchEvent) => {
     if (touchStart === null) return;
-    const currentX = e.targetTouches[0].clientX;
-    setTouchCurrent(currentX);
-    const offset = currentX - touchStart;
-    setSwipeOffset(offset);
+    const x = e.targetTouches[0].clientX;
+    setTouchCurrent(x);
+    setSwipeOffset(x - touchStart);
   };
-
   const onTouchEnd = useCallback(() => {
-    if (touchStart === null || touchCurrent === null) {
-      setTouchStart(null);
-      setTouchCurrent(null);
-      setSwipeOffset(0);
-      return;
+    if (touchStart !== null && touchCurrent !== null) {
+      const d = touchStart - touchCurrent;
+      if (d > 50) navigatePhoto("next");
+      else if (d < -50) navigatePhoto("prev");
     }
-
-    const distance = touchStart - touchCurrent;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
-
-    if (isLeftSwipe) {
-      navigatePhoto("next");
-    } else if (isRightSwipe) {
-      navigatePhoto("prev");
-    }
-
-    // Reset touch states
     setTouchStart(null);
     setTouchCurrent(null);
     setSwipeOffset(0);
   }, [touchStart, touchCurrent, navigatePhoto]);
+
+  const prevPhoto = getAdjacentPhoto("prev");
+  const nextPhoto = getAdjacentPhoto("next");
+  const visiblePhotos = allPhotos.slice(0, visibleCount);
+  const hasMore = visibleCount < allPhotos.length;
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] py-8 px-4 lg:px-8">
@@ -175,32 +166,54 @@ export default function PhotosPage() {
             <div className="p-8">
               <h2 className="text-3xl font-semibold text-white mb-8">Photo Gallery</h2>
 
-              <div className="columns-2 md:columns-3 gap-4">
-                {photos.map((photo) => {
-                  const isVertical = photo.aspectRatio < 1;
-                  return (
-                    <div
-                      key={photo.name}
-                      className="relative overflow-hidden rounded-2xl mb-4 break-inside-avoid cursor-pointer group"
-                      onClick={() => setSelectedPhoto(photo)}
-                    >
-                      <div className={`relative ${isVertical ? "aspect-[3/4]" : "aspect-[4/3]"}`}>
+              {loading ? (
+                <div className="flex justify-center py-12">
+                  <div className="w-6 h-6 rounded-full border-2 border-primary border-t-transparent animate-spin" />
+                </div>
+              ) : (
+                <>
+                  <div className="columns-2 md:columns-3 gap-4">
+                    {visiblePhotos.map((photo, index) => (
+                      <div
+                        key={photo.name}
+                        className="relative overflow-hidden rounded-2xl mb-4 break-inside-avoid cursor-pointer group"
+                        style={
+                          photo.width && photo.height
+                            ? { aspectRatio: `${photo.width} / ${photo.height}` }
+                            : undefined
+                        }
+                        onClick={() => openPhoto(photo)}
+                      >
                         <img
                           src={photo.thumbSrc}
                           alt={photo.name}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                          loading="lazy"
+                          ref={(img) => {
+                            if (img?.complete) img.classList.replace("opacity-0", "opacity-100");
+                          }}
+                          onLoad={(e) =>
+                            e.currentTarget.classList.replace("opacity-0", "opacity-100")
+                          }
+                          className="w-full h-full object-cover opacity-0 transition-all duration-500 group-hover:scale-110"
+                          style={{ transitionDelay: `${(index % PAGE_SIZE) * 80}ms` }}
                         />
                       </div>
+                    ))}
+                  </div>
+
+                  {hasMore && (
+                    <div ref={sentinelRef} className="py-4 flex justify-center">
+                      <div className="w-5 h-5 rounded-full border-2 border-primary border-t-transparent animate-spin" />
                     </div>
-                  );
-                })}
-              </div>
+                  )}
+                </>
+              )}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Full-size Image Modal */}
+      {/* Lightbox */}
       {selectedPhoto && (
         <div
           className="fixed inset-0 z-50 bg-black/90 overflow-hidden"
@@ -212,49 +225,59 @@ export default function PhotosPage() {
           <button
             onClick={(e) => { e.stopPropagation(); setSelectedPhoto(null); }}
             className="absolute top-4 right-4 z-10 w-10 h-10 bg-[#1e1e1f] border border-[#383838] rounded-xl flex items-center justify-center hover:bg-[#2b2b2c] transition-colors"
-            aria-label="Close image"
+            aria-label="Close"
           >
             <X className="w-6 h-6 text-white" />
           </button>
 
-          {/* 3-panel strip: [prev][current][next], strip is 300vw, offset so current is visible */}
+          {/* 3-panel swipe strip */}
           <div
             className="absolute top-0 flex h-full"
-            style={{
-              width: "300vw",
-              left: "-100vw",
-              transform: `translateX(${swipeOffset}px)`,
-              touchAction: "none",
-            }}
+            style={{ width: "300vw", left: "-100vw", transform: `translateX(${swipeOffset}px)`, touchAction: "none" }}
           >
-            {/* Previous */}
+            {/* Prev */}
             <div className="w-screen h-full flex items-center justify-center p-4">
-              {getPrevPhoto() && (
+              {prevPhoto && (
                 <img
-                  src={getPrevPhoto()!.src}
-                  alt={getPrevPhoto()!.name}
+                  src={buildUrl(prevPhoto.fullPath)}
+                  alt={prevPhoto.name}
                   className="max-w-full max-h-[90vh] object-contain rounded-lg select-none"
                   onClick={(e) => e.stopPropagation()}
                   draggable={false}
                 />
               )}
             </div>
+
             {/* Current */}
             <div className="w-screen h-full flex items-center justify-center p-4">
-              <img
-                src={selectedPhoto.src}
-                alt={selectedPhoto.name}
-                className="max-w-full max-h-[90vh] object-contain rounded-lg select-none"
-                onClick={(e) => e.stopPropagation()}
-                draggable={false}
-              />
+              {fullSrc ? (
+                <img
+                  src={fullSrc}
+                  alt={selectedPhoto.name}
+                  className="max-w-full max-h-[90vh] object-contain rounded-lg select-none"
+                  onClick={(e) => e.stopPropagation()}
+                  draggable={false}
+                />
+              ) : (
+                <div className="relative flex items-center justify-center">
+                  <img
+                    src={selectedPhoto.thumbSrc}
+                    alt={selectedPhoto.name}
+                    className="max-w-full max-h-[90vh] object-contain rounded-lg select-none opacity-30"
+                    onClick={(e) => e.stopPropagation()}
+                    draggable={false}
+                  />
+                  <div className="absolute w-8 h-8 rounded-full border-2 border-white border-t-transparent animate-spin" />
+                </div>
+              )}
             </div>
+
             {/* Next */}
             <div className="w-screen h-full flex items-center justify-center p-4">
-              {getNextPhoto() && (
+              {nextPhoto && (
                 <img
-                  src={getNextPhoto()!.src}
-                  alt={getNextPhoto()!.name}
+                  src={buildUrl(nextPhoto.fullPath)}
+                  alt={nextPhoto.name}
                   className="max-w-full max-h-[90vh] object-contain rounded-lg select-none"
                   onClick={(e) => e.stopPropagation()}
                   draggable={false}
