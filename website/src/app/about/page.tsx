@@ -59,8 +59,10 @@ export default function AboutPage() {
               <div>
                 <h3 className="text-xl font-semibold text-white mb-6">About me</h3>
                 <p className="text-sm text-gray-300 leading-relaxed">
-                  My name is Ved and I'm a software engineer and photographer based in Seattle.
-                  I have a strong background in backend development, distributed systems, and maintaining SaaS applications.
+                 I'm a Software Engineer & Hobbyist Photographer based in Seattle.
+                  Specialized in building out large-scale backend systems and designing agentic workflows for developer tooling.
+                  I’m passionate about scaling sustainably—leveraging agentic self-healing E2E automation to increase team velocity without sacrificing fundamentals.
+                  Currently exploring the intersection of distributed systems and AI-driven infrastructure.
                   Please explore my portfolio to learn more about me and my work :)
                 </p>
               </div>

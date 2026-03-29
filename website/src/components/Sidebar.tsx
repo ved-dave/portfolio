@@ -147,10 +147,10 @@ export default function Sidebar() {
               <h1 className="text-2xl font-semibold text-white mb-2">Ved Dave</h1>
               <div className="flex flex-wrap gap-2">
                 <p className="text-sm text-gray-400 bg-[#2b2b2c] px-3 py-1 rounded-lg">
-                  Software Engineer
+                  Software Engineer 💻
                 </p>
                 <p className="text-sm text-gray-400 bg-[#2b2b2c] px-3 py-1 rounded-lg">
-                  Photographer
+                  Photographer 📸
                 </p>
               </div>
             </div>
