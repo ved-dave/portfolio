@@ -1,6 +1,5 @@
-import Sidebar from "@/components/Sidebar";
-import Navigation from "@/components/Navigation";
-import { ExternalLink } from "lucide-react";
+import PageLayout from "@/components/PageLayout";
+import ProjectCard from "@/components/ProjectCard";
 
 const projects = [
   {
@@ -55,69 +54,12 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] py-8 px-4 lg:px-8">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-6">
-        <Sidebar />
-
-        <div className="flex-1">
-          <div className="bg-[#1e1e1f] border border-[#383838] rounded-3xl overflow-hidden">
-            <Navigation />
-
-            <div className="p-8">
-              <h2 className="text-3xl font-semibold text-white mb-10">Projects</h2>
-
-              <div className="space-y-6">
-                {projects.map((project) => (
-                  <div
-                    key={project.name}
-                    className="bg-[#2b2b2c] border border-[#383838] rounded-2xl p-6"
-                  >
-                    <div className="flex items-start justify-between gap-4 mb-1">
-                      <div>
-                        <h3 className="text-lg font-semibold text-white">{project.name}</h3>
-                        <p className="text-xs text-gray-500 mt-0.5">{project.subtitle}</p>
-                      </div>
-                      {project.link && (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-shrink-0 flex items-center gap-1.5 text-xs text-primary hover:underline"
-                        >
-                          <ExternalLink className="w-3.5 h-3.5" />
-                          {project.link.replace("https://", "")}
-                        </a>
-                      )}
-                    </div>
-
-                    <ul className="mt-4 space-y-2">
-                      {project.bullets.map((bullet, i) => (
-                        <li key={i} className="flex gap-2 text-sm text-gray-300 leading-relaxed">
-                          <span className="text-primary flex-shrink-0">•</span>
-                          <span>{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {project.tags.length > 0 && (
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {project.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-xs text-gray-400 bg-[#1e1e1f] border border-[#383838] px-2.5 py-1 rounded-lg"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+    <PageLayout title="Projects">
+      <div className="space-y-6">
+        {projects.map((project) => (
+          <ProjectCard key={project.name} {...project} />
+        ))}
       </div>
-    </main>
+    </PageLayout>
   );
 }
