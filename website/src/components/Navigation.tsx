@@ -25,7 +25,7 @@ export default function Navigation() {
             <Link href="/experience" className={linkClasses("/experience")}>
               Experience
             </Link>
-            <Link href="/projects" className={`${linkClasses("/projects")} hidden`}>
+            <Link href="/projects" className={linkClasses("/projects")}>
               Projects
             </Link>
             <Link href="/photography" className={linkClasses("/photography")}>

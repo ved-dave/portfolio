@@ -106,7 +106,7 @@ export default function ResumePage() {
                         <ul className="mt-4 space-y-2">
                           {job.bullets.map((bullet, i) => (
                             <li key={i} className="flex gap-2 text-sm text-gray-300 leading-relaxed">
-                              <span className="text-primary mt-1.5 flex-shrink-0">•</span>
+                              <span className="text-primary flex-shrink-0">•</span>
                               <span>{bullet}</span>
                             </li>
                           ))}
