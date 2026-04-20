@@ -3,6 +3,18 @@ import ExperienceTimeline from "@/components/ExperienceTimeline";
 
 const workExperience = [
   {
+    company: "Stealth Startup",
+    logo: null, // Replace with: "/logos/stealth2.png"
+    logoAlt: "Stealth Startup",
+    role: "Founder",
+    team: "",
+    start: "Apr 2026",
+    end: "Present",
+    bullets: [
+      "Building a mobile-first ticketing platform for independent event hosts.",
+    ],
+  },
+  {
     company: "Microsoft",
     logo: "/logos/microsoft.png",
     logoAlt: "Microsoft",
