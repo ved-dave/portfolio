@@ -64,6 +64,19 @@ const workExperience = [
       "Proctored introductory mechanics lab sessions, assisted students with Python simulations, and graded lab reports with constructive feedback.",
     ],
   },
+  {
+    company: "Aerojet Rocketdyne",
+    logo: "/logos/aerojet.png",
+    logoAlt: "Aerojet Rocketdyne",
+    role: "Avionics Engineer Intern",
+    team: "",
+    start: "Nov 2016",
+    end: "Aug 2017",
+    bullets: [
+      "Collaborated with industry professionals to design and launch an Ethanol–LOX based rocket; designed an Arduino-based pressure sensor PCB to collect data periodically during launch.",
+      "Used collected pressure data to continuously calculate yaw and pitch in flight, and established protocols to communicate with the main avionics unit to update and correct trajectory.",
+    ],
+  },
 ];
 
 export default function ExperiencePage() {
