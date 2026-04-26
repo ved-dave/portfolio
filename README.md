@@ -44,7 +44,7 @@ portfolio/
 | Language | TypeScript |
 | Styling | [Tailwind CSS](https://tailwindcss.com) |
 | Icons | [Lucide React](https://lucide.dev) |
-| Hosting | [Netlify](https://netlify.com) |
+| Hosting | [Vercel](https://vercel.com) |
 
 ### Backend (`firebase/`)
 | | |

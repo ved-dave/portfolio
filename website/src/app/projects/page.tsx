@@ -22,7 +22,7 @@ const projects = [
       "Designed and built a personal portfolio site to showcase my work, photography, and background.",
       "Features a dynamic theme picker, Firebase-powered photo gallery with lazy loading, and a responsive layout.",
     ],
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Firebase", "Netlify"],
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Firebase", "Vercel"],
   },
   {
     name: "TinyChain",
