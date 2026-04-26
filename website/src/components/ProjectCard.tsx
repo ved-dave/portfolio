@@ -26,7 +26,7 @@ export default function ProjectCard({ name, subtitle, bullets, link, github, tag
               className="flex items-center gap-1.5 text-xs text-primary hover:underline"
             >
               <ExternalLink className="w-3.5 h-3.5" />
-              {link.replace("https://", "")}
+              <span className="hidden sm:inline">{link.replace("https://", "")}</span>
             </a>
           )}
           {github && (
@@ -37,7 +37,7 @@ export default function ProjectCard({ name, subtitle, bullets, link, github, tag
               className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition-colors"
             >
               <Github className="w-3.5 h-3.5" />
-              Source
+              <span className="hidden sm:inline">Source</span>
             </a>
           )}
         </div>
