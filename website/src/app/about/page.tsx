@@ -62,7 +62,7 @@ export default function AboutPage() {
                  I'm a Software Engineer & Hobbyist Photographer based in Seattle.
                   Specialized in building out large-scale backend systems and designing agentic workflows for developer tooling.
                   I’m passionate about scaling sustainably—leveraging agentic self-healing E2E automation to increase team velocity without sacrificing fundamentals.
-                  Currently exploring the intersection of distributed systems and AI-driven infrastructure.
+                  Currently building an event ticketing platform for indie and small-medium scale events.
                   Please explore my portfolio to learn more about me and my work :)
                 </p>
               </div>
