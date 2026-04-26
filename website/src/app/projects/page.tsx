@@ -6,6 +6,7 @@ const projects = [
     name: "MapLinky",
     subtitle: "Universal Map Link Converter",
     link: "https://maplinky.com",
+    github: "https://github.com/ved-dave/MapLinky",
     bullets: [
       "Built maplinky.com to solve a simple but annoying problem — shared map links often break across platforms, so this tool automatically detects and converts links between Google Maps, Apple Maps, and OpenStreetMap.",
       "Backend runs on a Cloudflare Worker with Gemini handling the link parsing; vanilla JS on the frontend.",
@@ -16,6 +17,7 @@ const projects = [
     name: "This Portfolio",
     subtitle: "Personal Portfolio Website",
     link: null,
+    github: "https://github.com/ved-dave/portfolio",
     bullets: [
       "Designed and built a personal portfolio site to showcase my work, photography, and background.",
       "Features a dynamic theme picker, Firebase-powered photo gallery with lazy loading, and a responsive layout.",
@@ -34,16 +36,16 @@ const projects = [
   },
   {
     name: "TensorFlow Model Garden",
-    subtitle: "VIP Research Lab, Google Partnership",
+    subtitle: "Purdue VIP Research Lab, Google",
     link: null,
     bullets: [
-      "Worked with Google through Purdue's VIP program training YOLO-based object detection models; built a new data pipeline to handle YOLOv3 constraints and integrated it into the TensorFlow Model Garden.",
+      "Partnered with Google through Purdue's VIP program training YOLO-based object detection models; built a new data pipeline to handle YOLOv3 constraints and integrated it into the TensorFlow Model Garden.",
     ],
     tags: ["Python", "TensorFlow", "YOLOv3"],
   },
   {
     name: "CAM2 Code Review Tool",
-    subtitle: "Open Source, VIP Research Lab",
+    subtitle: "Purdue VIP Research Lab",
     link: null,
     bullets: [
       "Built static analysis tools for an open-source code review project — unused code detection, duplicate code flagging, and runtime profiling to help developers catch bugs before they ship.",

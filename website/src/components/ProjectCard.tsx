@@ -1,14 +1,15 @@
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 
 interface ProjectCardProps {
   name: string;
   subtitle: string;
   bullets: string[];
   link?: string | null;
+  github?: string | null;
   tags?: string[];
 }
 
-export default function ProjectCard({ name, subtitle, bullets, link, tags }: ProjectCardProps) {
+export default function ProjectCard({ name, subtitle, bullets, link, github, tags }: ProjectCardProps) {
   return (
     <div className="bg-[#2b2b2c] border border-[#383838] rounded-2xl p-6">
       <div className="flex items-start justify-between gap-4 mb-1">
@@ -16,17 +17,30 @@ export default function ProjectCard({ name, subtitle, bullets, link, tags }: Pro
           <h3 className="text-lg font-semibold text-white">{name}</h3>
           <p className="text-xs text-gray-500 mt-0.5">{subtitle}</p>
         </div>
-        {link && (
-          <a
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-shrink-0 flex items-center gap-1.5 text-xs text-primary hover:underline"
-          >
-            <ExternalLink className="w-3.5 h-3.5" />
-            {link.replace("https://", "")}
-          </a>
-        )}
+        <div className="flex items-center gap-3 flex-shrink-0">
+          {link && (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-xs text-primary hover:underline"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              {link.replace("https://", "")}
+            </a>
+          )}
+          {github && (
+            <a
+              href={github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition-colors"
+            >
+              <Github className="w-3.5 h-3.5" />
+              Source
+            </a>
+          )}
+        </div>
       </div>
 
       <ul className="mt-4 space-y-2">
