@@ -9,7 +9,7 @@ const projects = [
     github: "https://github.com/ved-dave/MapLinky",
     bullets: [
       "Built maplinky.com to solve a simple but annoying problem — shared map links often break across platforms, so this tool automatically detects and converts links between Google Maps, Apple Maps, and OpenStreetMap.",
-      "Backend runs on a Cloudflare Worker with Gemini handling the link parsing; vanilla JS on the frontend.",
+      "Backend runs on a Cloudflare Worker with Gemini handling the link parsing; Vanilla JS on the frontend.",
     ],
     tags: ["Cloudflare Workers", "Gemini", "JavaScript"],
   },
@@ -19,7 +19,7 @@ const projects = [
     link: null,
     github: "https://github.com/ved-dave/portfolio",
     bullets: [
-      "Designed and built a personal portfolio site to showcase my work, photography, and background.",
+      "Designed and built a personal portfolio site to showcase my work experience, photography, and background in a fun and creative way.",
       "Features a dynamic theme picker, Firebase-powered photo gallery with lazy loading, and a responsive layout.",
     ],
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Firebase", "Vercel"],

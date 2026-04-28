@@ -25,6 +25,7 @@ const workExperience = [
     bullets: [
       "Piloted org-wide agentic QA automation initiative using LLM-driven workflows, achieving 100% backend API E2E test coverage (400+ test cases) across team and sister teams — reduced QA costs by 70% and improved service reliability from 4 to 5 nines.",
       "Led implementation of attachment/file sharing service and public Messaging APIs as part of large-scale CRM SaaS infrastructure migration to BAP Core Services.",
+      "Partnered with Microsoft Dynamics' highest-priority customers on Solution Engineering – swift delivery of features from direct user feedback and quick mitigation and communication during on-call incidents."
     ],
   },
   {

@@ -150,6 +150,9 @@ export default function Sidebar() {
                   Software Engineer 💻
                 </p>
                 <p className="text-sm text-gray-400 bg-[#2b2b2c] px-3 py-1 rounded-lg">
+                  Founder 🚀
+                </p>
+                <p className="text-sm text-gray-400 bg-[#2b2b2c] px-3 py-1 rounded-lg">
                   Photographer 📸
                 </p>
               </div>
