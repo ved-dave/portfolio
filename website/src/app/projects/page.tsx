@@ -16,7 +16,7 @@ const projects = [
     {
     name: "World Map Travel Tracker",
     subtitle: "Shareable and colorable world map",
-    link: "https://map.veddave.com",
+    link: "https://traveltracker.veddave.com",
     github: "https://github.com/ved-dave/traveltracker",
     bullets: [
       "Colorable world map with custom colors and login feature to save and share your map with others.",
