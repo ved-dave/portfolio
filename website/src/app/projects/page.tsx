@@ -13,6 +13,17 @@ const projects = [
     ],
     tags: ["Cloudflare Workers", "Gemini", "JavaScript"],
   },
+    {
+    name: "World Map Travel Tracker",
+    subtitle: "Shareable and colorable world map",
+    link: "https://map.veddave.com",
+    github: "https://github.com/ved-dave/traveltracker",
+    bullets: [
+      "Colorable world map with custom colors and login feature to save and share your map with others.",
+      "Implemented with Next.js on frontend, backend uses Supabase for authentication and for storing the shareable map data",
+    ],
+    tags: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS", "Postgres"],
+  },
   {
     name: "This Portfolio",
     subtitle: "Personal Portfolio Website",
