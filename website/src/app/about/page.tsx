@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
+import Link from "next/link";
 import Sidebar from "@/components/Sidebar";
 import Navigation from "@/components/Navigation";
 import IconDev from "@/components/icons/IconDev";
@@ -69,11 +70,11 @@ export default function AboutPage() {
 
               {/* What I'm Doing */}
               <div>
-                <h3 className="text-xl font-semibold text-white mb-6">What i'm doing</h3>
+                <h3 className="text-xl font-semibold text-white mb-6">What I'm doing</h3>
                 
                 <div className="grid md:grid-cols-2 gap-4">
                   {/* Developing */}
-                  <div className="bg-[#2b2b2c] border border-[#383838] rounded-2xl p-6 flex gap-4">
+                  <Link href="/projects" className="bg-[#2b2b2c] border border-[#383838] rounded-2xl p-6 flex gap-4 hover:border-primary/50 hover:bg-[#323233] transition-colors cursor-pointer">
                     <IconDev className="w-12 h-12 text-primary flex-shrink-0" />
                     <div>
                       <h4 className="text-lg font-medium text-white mb-2">Developing</h4>
@@ -81,10 +82,10 @@ export default function AboutPage() {
                         Solving cutting edge challenges one line of code at a time.
                       </p>
                     </div>
-                  </div>
-                  
+                  </Link>
+
                   {/* Dining */}
-                  <div className="bg-[#2b2b2c] border border-[#383838] rounded-2xl p-6 flex gap-4">
+                  <div className="bg-[#2b2b2c] border border-[#383838] rounded-2xl p-6 flex gap-4 hover:border-primary/50 hover:bg-[#323233] transition-colors cursor-pointer">
                     <IconFood className="w-12 h-12 text-primary flex-shrink-0" />
                     <div>
                       <h4 className="text-lg font-medium text-white mb-2">Dining</h4>
@@ -95,7 +96,7 @@ export default function AboutPage() {
                   </div>
 
                   {/* Photography */}
-                  <div className="bg-[#2b2b2c] border border-[#383838] rounded-2xl p-6 flex gap-4">
+                  <Link href="/photography" className="bg-[#2b2b2c] border border-[#383838] rounded-2xl p-6 flex gap-4 hover:border-primary/50 hover:bg-[#323233] transition-colors cursor-pointer">
                     <IconPhoto className="w-12 h-12 text-primary flex-shrink-0" />
                     <div>
                       <h4 className="text-lg font-medium text-white mb-2">Photography</h4>
@@ -103,10 +104,10 @@ export default function AboutPage() {
                         Narrating stories and emotions through the lens.
                       </p>
                     </div>
-                  </div>
+                  </Link>
 
                   {/* Travel */}
-                  <div className="bg-[#2b2b2c] border border-[#383838] rounded-2xl p-6 flex gap-4">
+                  <a href="https://traveltracker.veddave.com/ved" target="_blank" rel="noopener noreferrer" className="bg-[#2b2b2c] border border-[#383838] rounded-2xl p-6 flex gap-4 hover:border-primary/50 hover:bg-[#323233] transition-colors cursor-pointer">
                     <IconTravel className="w-12 h-12 text-primary flex-shrink-0" />
                     <div>
                       <h4 className="text-lg font-medium text-white mb-2">Travel</h4>
@@ -114,7 +115,7 @@ export default function AboutPage() {
                         Exploring every corner of our beautiful planet.
                       </p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
 
