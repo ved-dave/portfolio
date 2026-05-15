@@ -11,7 +11,7 @@ import IconTravel from "@/components/icons/IconTravel";
 
 export default function AboutPage() {
   const [typingText, setTypingText] = useState("Foo");
-  const typingWords = useMemo(() => ["Software Engineer", "Freelance Photographer", "World Traveler"], []);
+  const typingWords = useMemo(() => ["Software Engineer", "Entrepreneur", "Freelance Photographer", "World Traveler"], []);
   const [wordIndex, setWordIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
