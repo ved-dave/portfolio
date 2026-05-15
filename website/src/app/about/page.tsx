@@ -60,7 +60,7 @@ export default function AboutPage() {
               <div>
                 <h3 className="text-xl font-semibold text-white mb-6">About me</h3>
                 <p className="text-sm text-gray-300 leading-relaxed">
-                 I'm a Software Engineer & Hobbyist Photographer based in Seattle.
+                 I'm a Software Engineer, Founder, and Hobbyist Photographer based in Seattle.
                   Specialized in building out large-scale backend systems and designing agentic workflows for developer tooling.
                   I’m passionate about scaling sustainably—leveraging agentic self-healing E2E automation to increase team velocity without sacrificing fundamentals.
                   Currently building an event ticketing platform for indie and small-medium scale events.
