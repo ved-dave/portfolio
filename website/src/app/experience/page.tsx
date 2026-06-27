@@ -3,7 +3,7 @@ import ExperienceTimeline from "@/components/ExperienceTimeline";
 
 const workExperience = [
   {
-    company: "Stealth Startup",
+    company: "DeckPass",
     logo: null, // Replace with: "/logos/stealth2.png"
     logoAlt: "Stealth Startup",
     role: "Founder",
