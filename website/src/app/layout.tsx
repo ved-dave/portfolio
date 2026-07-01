@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import ClientBody from "./ClientBody";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Ved Dave",
@@ -26,6 +27,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning className="antialiased">
         <ClientBody>{children}</ClientBody>
+        <Analytics />
       </body>
     </html>
   );
