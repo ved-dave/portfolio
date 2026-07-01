@@ -5,10 +5,10 @@ const projects = [
   {
     name: "MapLinky",
     subtitle: "Universal Map Link Converter",
-    link: "https://maplinky.com",
+    link: "https://maplinky.veddave.com",
     github: "https://github.com/ved-dave/MapLinky",
     bullets: [
-      "Built maplinky.com to solve a simple but annoying problem — shared map links often break across platforms, so this tool automatically detects and converts links between Google Maps, Apple Maps, and OpenStreetMap.",
+      "Built MapLinky to solve a simple but annoying problem — shared map links often break across platforms, so this tool automatically detects and converts links between Google Maps, Apple Maps, and OpenStreetMap.",
       "Backend runs on a Cloudflare Worker with Gemini handling the link parsing; Vanilla JS on the frontend.",
     ],
     tags: ["Cloudflare Workers", "Gemini", "JavaScript"],
