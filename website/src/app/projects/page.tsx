@@ -30,7 +30,7 @@ const projects = [
     link: null,
     github: "https://github.com/ved-dave/portfolio",
     bullets: [
-      "Designed and built a personal portfolio site to showcase my work experience, photography, and background in a fun and creative way.",
+      "Designed and built a personal portfolio site to showcase my background, work experience, and photography in a fun and creative way.",
       "Features a dynamic theme picker, Firebase-powered photo gallery with lazy loading, and a responsive layout.",
     ],
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Firebase", "Vercel"],
