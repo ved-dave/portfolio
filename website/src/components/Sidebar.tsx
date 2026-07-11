@@ -198,7 +198,7 @@ export default function Sidebar() {
           <div className="border-t border-[#383838] pt-6">
             <div className="flex gap-3 justify-center">
               <a
-                href="https://www.linkedin.com/in/ved-dave-b715ab152/"
+                href="https://www.linkedin.com/in/veddave/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-[#2b2b2c] rounded-xl flex items-center justify-center hover:bg-[#383838] transition-colors"
