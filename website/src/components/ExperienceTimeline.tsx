@@ -9,6 +9,7 @@ interface ExperienceEntry {
   start: string;
   end: string;
   bullets: string[];
+  link?: string | null;
 }
 
 interface ExperienceTimelineProps {

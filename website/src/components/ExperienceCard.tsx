@@ -1,3 +1,5 @@
+import { ExternalLink } from "lucide-react";
+
 interface ExperienceCardProps {
   company: string;
   logo?: string | null;
@@ -7,6 +9,7 @@ interface ExperienceCardProps {
   start: string;
   end: string;
   bullets: string[];
+  link?: string | null;
 }
 
 export default function ExperienceCard({
@@ -18,6 +21,7 @@ export default function ExperienceCard({
   start,
   end,
   bullets,
+  link,
 }: ExperienceCardProps) {
   return (
     <div className="relative flex gap-6">
@@ -37,7 +41,19 @@ export default function ExperienceCard({
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-1">
           <div>
             <h3 className="text-lg font-semibold text-white">{role}</h3>
-            <p className="text-sm font-medium text-primary">{company}</p>
+            {link ? (
+              <a
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+              >
+                {company}
+                <ExternalLink className="w-3.5 h-3.5 flex-shrink-0" />
+              </a>
+            ) : (
+              <p className="text-sm font-medium text-primary">{company}</p>
+            )}
             <p className="text-xs text-gray-500 mt-0.5">{team}</p>
           </div>
           <span className="text-xs text-gray-400 bg-[#1e1e1f] border border-[#383838] px-3 py-1 rounded-lg whitespace-nowrap self-start">

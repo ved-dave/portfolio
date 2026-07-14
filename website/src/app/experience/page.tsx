@@ -10,8 +10,11 @@ const workExperience = [
     team: "",
     start: "Apr 2026",
     end: "Present",
+    link: "https://liventful.com",
     bullets: [
-      "Building a mobile-first ticketing platform for independent event hosts.",
+      "Building a mobile-first event operations platform for independent event hosts.",
+      "Custom whitelabeled branding to empower hosts to own their own community.",
+      "Ticketing and AI powered analytics to support growing creators and organizers."
     ],
   },
   {
