@@ -60,11 +60,11 @@ export default function AboutPage() {
               <div>
                 <h3 className="text-xl font-semibold text-white mb-6">About me</h3>
                 <p className="text-sm text-gray-300 leading-relaxed">
-                 I'm a Software Engineer, Founder, and Hobbyist Photographer based in Seattle.
-                  Specialized in building out large-scale backend systems and designing agentic workflows for developer tooling.
-                  I’m passionate about scaling sustainably—leveraging agentic self-healing E2E automation to increase team velocity without sacrificing fundamentals.
-                  Currently building an event ticketing platform for indie and small-medium scale events.
-                  Please explore my portfolio to learn more about me and my work :)
+                 I'm a Software Engineer, Founder, and Hobbyist Photographer based between Seattle and New York City.
+                 I was formerly at Microsoft working on agentic testing pipelines and core backend infrastructure for the Dynamics 365 Omnichannel product.
+                 Currently building a customer-personalized event operations platform for indie scale event hosts and community organizers.
+                 My expertise spans applied AI, full stack development, and solution/forward deployed engineering working closely with customers and users to build customized integrations.
+                 Please explore my portfolio to learn more about me and my work :)
                 </p>
               </div>
 

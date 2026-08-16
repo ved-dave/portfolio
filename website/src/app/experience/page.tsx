@@ -14,7 +14,8 @@ const workExperience = [
     bullets: [
       "Building a mobile-first event operations platform for independent event hosts.",
       "Custom whitelabeled branding to empower hosts to own their own community.",
-      "Ticketing and AI powered analytics to support growing creators and organizers."
+      "Ticketing and AI powered analytics to support growing creators and organizers.",
+      "Stack is a distributed backend service split between Python (FastAPI, LangChain integration) and TypeScript (Node), and React TypeScript for frontend."
     ],
   },
   {
