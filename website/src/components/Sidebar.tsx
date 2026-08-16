@@ -180,7 +180,7 @@ export default function Sidebar() {
               </div>
               <div>
                 <p className="text-xs text-gray-400 uppercase mb-1">Location</p>
-                <p className="text-sm text-white">Seattle, WA</p>
+                <p className="text-sm text-white">Seattle ⇔ NYC</p>
               </div>
             </div>
 
