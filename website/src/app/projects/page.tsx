@@ -10,7 +10,7 @@ const projects = [
       "Prototype song queue app for a Liventful customer.",
       "Deployed to customer on site (DJ studio) during development and also during the event.",
       "Collected ~$300 in revenue from the service during the Fake Wedding party hosted on Aug 8, 2026 in Seattle.",
-      "Backend runs on a Railway container with Node backend, React frontend on Vercel.",
+      "Stack is a Railway container with Node backend, React frontend on Vercel.",
     ],
     tags: ["React", "Node", "TypeScript", "Stripe"],
   },
