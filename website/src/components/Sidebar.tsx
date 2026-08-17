@@ -168,7 +168,7 @@ export default function Sidebar() {
               </div>
               <div>
                 <p className="text-xs text-gray-400 uppercase mb-1">Email</p>
-                <a href="mailto:me@hveddave.com" className="text-sm text-white hover:text-primary">
+                <a href="mailto:me@veddave.com" className="text-sm text-white hover:text-primary">
                   me@veddave.com
                 </a>
               </div>
