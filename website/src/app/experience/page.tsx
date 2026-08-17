@@ -4,8 +4,8 @@ import ExperienceTimeline from "@/components/ExperienceTimeline";
 const workExperience = [
   {
     company: "Liventful",
-    logo: null, // Replace with: "/logos/stealth2.png"
-    logoAlt: "Stealth Startup",
+    logo: "/logos/liventful.png",
+    logoAlt: "Liventful",
     role: "Founder",
     team: "",
     start: "Apr 2026",
@@ -46,9 +46,9 @@ const workExperience = [
     ],
   },
   {
-    company: "Stealth Startup",
+    company: "LunchBot",
     logo: null, // Replace with: "/logos/stealth.png"
-    logoAlt: "Stealth Startup",
+    logoAlt: "LunchBot",
     role: "Software Engineering Intern",
     team: "Enterprise Catering Delivery",
     start: "Jun 2020",
