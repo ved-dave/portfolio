@@ -11,6 +11,7 @@ const projects = [
       "Deployed to customer on site (DJ studio) during development and also during the event.",
       "Collected ~$300 in revenue from the service during the Fake Wedding party hosted on Aug 8, 2026 in Seattle.",
       "Stack is a Railway container with Node backend, React frontend on Vercel.",
+      "P.S. Don't pay to queue any songs here unless you want to make me a personal donation :P"
     ],
     tags: ["React", "Node", "TypeScript", "Stripe"],
   },
