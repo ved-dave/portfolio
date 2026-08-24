@@ -36,7 +36,7 @@ const workExperience = [
     company: "Microsoft",
     logo: "/logos/microsoft.png",
     logoAlt: "Microsoft",
-    role: "Software Engineering Intern",
+    role: "Software Engineer Intern",
     team: "Dynamics 365 CRM, Omnichannel Messaging",
     start: "May 2021",
     end: "Aug 2021",
@@ -49,7 +49,7 @@ const workExperience = [
     company: "LunchBot",
     logo: null, // Replace with: "/logos/stealth.png"
     logoAlt: "LunchBot",
-    role: "Software Engineering Intern",
+    role: "Software Engineer Intern",
     team: "Enterprise Catering Delivery",
     start: "Jun 2020",
     end: "Aug 2020",
