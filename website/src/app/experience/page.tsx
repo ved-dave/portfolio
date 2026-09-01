@@ -3,13 +3,26 @@ import ExperienceTimeline from "@/components/ExperienceTimeline";
 
 const workExperience = [
   {
+    company: "Ama Earth Group",
+    logo: "/logos/ama.png",
+    logoAlt: "AMA",
+    role: "Forward Deployed Engineer",
+    team: "",
+    start: "Sept 2026",
+    end: "Present",
+    link: "https://amahq.com",
+    bullets: [
+      "Accelerating environmental infrastructure assessments.",
+    ],
+  },
+  {
     company: "Liventful",
     logo: "/logos/liventful.png",
     logoAlt: "Liventful",
     role: "Founder",
     team: "",
     start: "Apr 2026",
-    end: "Present",
+    end: "Aug 2026",
     link: "https://liventful.com",
     bullets: [
       "Building a mobile-first event operations platform for independent event hosts.",
