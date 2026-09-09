@@ -16,6 +16,19 @@ const workExperience = [
     ],
   },
   {
+    company: "Truvai Labs",
+    logo: "",
+    logoAlt: "Truvai",
+    role: "Founder / Consultant",
+    team: "",
+    start: "Apr 2026",
+    end: "Present",
+    link: "https://truvai.com",
+    bullets: [
+      "Engineering consultancy firm - deploying custom software solutions for small businesses",
+    ],
+  },
+  {
     company: "Liventful",
     logo: "/logos/liventful.png",
     logoAlt: "Liventful",
