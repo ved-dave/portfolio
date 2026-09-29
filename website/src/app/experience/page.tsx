@@ -7,12 +7,14 @@ const workExperience = [
     logo: "/logos/ama.png",
     logoAlt: "AMA",
     role: "Forward Deployed Engineer",
-    team: "",
+    team: "Founding Team",
     start: "Sept 2026",
     end: "Present",
     link: "https://amahq.com",
     bullets: [
-      "Accelerating environmental infrastructure assessments.",
+      'Standardized execution paths and evals on their agents for their signature AI tool "Mycel".',
+      "Built out an agentic dev harness to automate development in their organization, with slackbot integration.",
+      "Migrated Mycel to multi-service system to decouple core API logic from intensive tasks, laying the foundation for future service scaling."
     ],
   },
   {
