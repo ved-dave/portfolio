@@ -12,9 +12,11 @@ const workExperience = [
     end: "Present",
     link: "https://amahq.com",
     bullets: [
-      'Standardized execution paths and evals on their agents for their signature AI tool "Mycel".',
-      "Built out an agentic dev workflow to automate product engineering, from tickets to PRs E2E with slackbot integration.",
-      "Migrated Mycel to multi-service system to decouple core API logic from intensive tasks, laying the foundation for future service scaling."
+      'Standardized execution paths and evals to improve consistency for their signature AI tool "Mycel".',
+      "Built an agentic dev pipeline that triages user feedback into Linear tickets and auto-generates feature PRs.",
+      "Accelerated engineer velocity by 8X using this workflow, with notifications using their Slack Workspace.",
+      "Performed pre-launch scale testing to identify resource contention issues under concurrent load.",
+      "Migrated Mycel to multi-service system to decouple core service performance from impact from intensive tasks."
     ],
   },
   {
