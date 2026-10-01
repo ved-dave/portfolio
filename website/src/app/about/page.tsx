@@ -62,8 +62,8 @@ export default function AboutPage() {
                 <p className="text-sm text-gray-300 leading-relaxed">
                  I'm a Software Engineer, Founder, and Photographer based between Seattle and New York City.
                  I run my own engineering consultancy firm where I help early stage startups and small businesses scale out their vision with technology.
-                 I was formerly at Microsoft working on agentic testing pipelines and core backend infra for the Dynamics 365, and also
-                 built a customer-personalized event operations platform for indie event hosts and organizers.
+                 I was formerly at Microsoft working on agentic testing pipelines and core backend infra for the Dynamics 365.
+                 I also built a customer-personalized event operations platform for indie event hosts and organizers.
                  My expertise spans applied AI, full stack development, and solution/forward deployed engineering.
                  Please explore my portfolio to learn more about me and my work :)
                 </p>
