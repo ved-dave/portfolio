@@ -11,7 +11,7 @@ import IconTravel from "@/components/icons/IconTravel";
 
 export default function AboutPage() {
   const [typingText, setTypingText] = useState("Foo");
-  const typingWords = useMemo(() => ["Software Engineer", "Entrepreneur", "Freelance Photographer", "World Traveler"], []);
+  const typingWords = useMemo(() => ["Engineer", "Entrepreneur", "Photographer", "World Traveler"], []);
   const [wordIndex, setWordIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -60,10 +60,11 @@ export default function AboutPage() {
               <div>
                 <h3 className="text-xl font-semibold text-white mb-6">About me</h3>
                 <p className="text-sm text-gray-300 leading-relaxed">
-                 I'm a Software Engineer, Founder, and Hobbyist Photographer based between Seattle and New York City.
-                 I was formerly at Microsoft working on agentic testing pipelines and core backend infrastructure for the Dynamics 365 Omnichannel product, and also
+                 I'm a Software Engineer, Founder, and Photographer based between Seattle and New York City.
+                 I run my own engineering consultancy firm where I help early stage startups and small businesses scale out their vision with technology.
+                 I was formerly at Microsoft working on agentic testing pipelines and core backend infra for the Dynamics 365, and also
                  built a customer-personalized event operations platform for indie event hosts and organizers.
-                 My expertise spans applied AI, full stack development, and solution/forward deployed engineering working closely with customers to build customized integrations.
+                 My expertise spans applied AI, full stack development, and solution/forward deployed engineering.
                  Please explore my portfolio to learn more about me and my work :)
                 </p>
               </div>
@@ -73,13 +74,13 @@ export default function AboutPage() {
                 <h3 className="text-xl font-semibold text-white mb-6">What I'm doing</h3>
                 
                 <div className="grid md:grid-cols-2 gap-4">
-                  {/* Developing */}
+                  {/* Building */}
                   <Link href="/projects" className="bg-[#2b2b2c] border border-[#383838] rounded-2xl p-6 flex gap-4 hover:border-primary/50 hover:bg-[#323233] transition-colors cursor-pointer">
                     <IconDev className="w-12 h-12 text-primary flex-shrink-0" />
                     <div>
-                      <h4 className="text-lg font-medium text-white mb-2">Developing</h4>
+                      <h4 className="text-lg font-medium text-white mb-2">Building</h4>
                       <p className="text-sm text-gray-400">
-                        Solving cutting edge challenges one line of code at a time.
+                        Solving the greatest challenges of our time.
                       </p>
                     </div>
                   </Link>

@@ -13,7 +13,7 @@ const workExperience = [
     link: "https://amahq.com",
     bullets: [
       'Standardized execution paths and evals on their agents for their signature AI tool "Mycel".',
-      "Built out an agentic dev harness to automate development in their organization, with slackbot integration.",
+      "Built out an agentic dev workflow to automate product engineering, from tickets to PRs E2E with slackbot integration.",
       "Migrated Mycel to multi-service system to decouple core API logic from intensive tasks, laying the foundation for future service scaling."
     ],
   },

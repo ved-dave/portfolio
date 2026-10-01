@@ -1,4 +1,5 @@
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink } from "lucide-react";
+import BrandIcon from "./BrandIcon";
 
 interface ProjectCardProps {
   name: string;
@@ -36,7 +37,7 @@ export default function ProjectCard({ name, subtitle, bullets, link, github, tag
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition-colors"
             >
-              <Github className="w-3.5 h-3.5" />
+              <BrandIcon name="github" className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Source</span>
             </a>
           )}
