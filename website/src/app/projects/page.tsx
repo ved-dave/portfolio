@@ -6,6 +6,7 @@ const projects = [
     name: "DJ song queue app",
     subtitle: "Prototype night club DJ song queue",
     link: "https://dj-vibez-fake-wedding.vercel.app/",
+    github: "https://github.com/truvailabs/dj-request-app",
     bullets: [
       "Prototype song queue app for a Liventful customer.",
       "Deployed to customer on site (DJ studio) during development and also during the event.",
