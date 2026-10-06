@@ -226,7 +226,7 @@ export default function Sidebar() {
                 href="https://x.com/veddave18"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden w-10 h-10 bg-[#2b2b2c] rounded-xl flex items-center justify-center hover:bg-[#383838] transition-colors"
+                className="w-10 h-10 bg-[#2b2b2c] rounded-xl flex items-center justify-center hover:bg-[#383838] transition-colors"
               >
                 <BrandIcon name="x" className="w-5 h-5 text-gray-300" />
               </a>
