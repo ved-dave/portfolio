@@ -11,7 +11,7 @@ import IconTravel from "@/components/icons/IconTravel";
 
 export default function AboutPage() {
   const [typingText, setTypingText] = useState("Foo");
-  const typingWords = useMemo(() => ["Engineer", "Entrepreneur", "Photographer", "World Traveler"], []);
+  const typingWords = useMemo(() => ["Software Engineer", "Entrepreneur", "Photographer", "World Traveler"], []);
   const [wordIndex, setWordIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -61,9 +61,9 @@ export default function AboutPage() {
                 <h3 className="text-xl font-semibold text-white mb-6">About me</h3>
                 <p className="text-sm text-gray-300 leading-relaxed">
                  I'm a Software Engineer, Founder, and Photographer based between Seattle and New York City.
-                 I run my own engineering consultancy firm where I help early stage startups and small businesses scale out their vision with technology.
-                 I was formerly at Microsoft working on agentic testing pipelines and core backend infra for the Dynamics 365.
-                 I also built a customer-personalized event operations platform for indie event hosts and organizers.
+                 I run my own engineering consultancy firm where I help early stage startups and small businesses scale out their vision with AI and technology.
+                 I was formerly at Microsoft building out agentic QA testing pipelines and core backend infra for the Dynamics 365.
+                 I also created a customer-personalized event operations platform for indie event hosts and organizers.
                  My expertise spans applied AI, full stack development, and solution/forward deployed engineering.
                  Please explore my portfolio to learn more about me and my work :)
                 </p>

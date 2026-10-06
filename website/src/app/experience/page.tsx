@@ -24,12 +24,16 @@ const workExperience = [
     logo: "",
     logoAlt: "Truvai",
     role: "Founder / Consultant",
-    team: "",
+    team: "Deployed AI and software studio",
     start: "Apr 2026",
     end: "Present",
     link: "https://truvai.com",
     bullets: [
-      "Engineering consultancy firm - deploying custom software solutions for small businesses",
+      "Engineering consultancy firm. Notable technical engagements and products:",
+      "Ama - Agentic environmental compliance.",
+      "Stealth - Agentic DJ setlist curation.",
+      "Haidar Cuts - Custom booking and CRM platform for Seattle area barber.",
+      "DJ Vibez - Live DJ tipping service for song requests."
     ],
   },
   {
