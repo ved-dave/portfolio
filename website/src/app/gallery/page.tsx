@@ -3,8 +3,8 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { ref, listAll, getMetadata } from "firebase/storage";
 import { storage } from "@/lib/firebase";
-import Sidebar from "@/components/Sidebar";
-import Navigation from "@/components/Navigation";
+import Shell from "@/components/term/Shell";
+import Prompt from "@/components/term/Prompt";
 import { X } from "lucide-react";
 
 const PAGE_SIZE = 9;
@@ -155,28 +155,27 @@ export default function PhotosPage() {
   const hasMore = visibleCount < allPhotos.length;
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] py-8 px-4 lg:px-8">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-6">
-        <Sidebar />
-
-        <div className="flex-1">
-          <div className="bg-[#1e1e1f] border border-[#383838] rounded-3xl overflow-hidden">
-            <Navigation />
-
-            <div className="p-8">
-              <h2 className="text-3xl font-semibold text-white mb-8">Photo Gallery</h2>
+    <Shell>
+      <Prompt
+        command="ls ~/gallery"
+        right={
+          !loading && allPhotos.length > 0 ? (
+            <span className="text-[12px] text-fg-muted">{allPhotos.length} photos</span>
+          ) : undefined
+        }
+      />
 
               {loading ? (
                 <div className="flex justify-center py-12">
-                  <div className="w-6 h-6 rounded-full border-2 border-primary border-t-transparent animate-spin" />
+                  <div className="w-6 h-6 rounded-full border-2 border-term border-t-transparent animate-spin" />
                 </div>
               ) : (
                 <>
-                  <div className="columns-2 md:columns-3 gap-4">
+                  <div className="columns-2 md:columns-3 gap-3">
                     {visiblePhotos.map((photo, index) => (
                       <div
                         key={photo.name}
-                        className="relative overflow-hidden rounded-2xl mb-4 break-inside-avoid cursor-pointer group"
+                        className="relative overflow-hidden mb-3 break-inside-avoid cursor-pointer group border border-border"
                         style={
                           photo.width && photo.height
                             ? { aspectRatio: `${photo.width} / ${photo.height}` }
@@ -194,7 +193,7 @@ export default function PhotosPage() {
                           onLoad={(e) =>
                             e.currentTarget.classList.replace("opacity-0", "opacity-100")
                           }
-                          className="w-full h-full object-cover opacity-0 transition-all duration-500 group-hover:scale-110"
+                          className="w-full h-full object-cover opacity-0 transition-all duration-500 group-hover:scale-105"
                           style={{ transitionDelay: `${(index % PAGE_SIZE) * 80}ms` }}
                         />
                       </div>
@@ -203,20 +202,16 @@ export default function PhotosPage() {
 
                   {hasMore && (
                     <div ref={sentinelRef} className="py-4 flex justify-center">
-                      <div className="w-5 h-5 rounded-full border-2 border-primary border-t-transparent animate-spin" />
+                      <div className="w-5 h-5 rounded-full border-2 border-term border-t-transparent animate-spin" />
                     </div>
                   )}
                 </>
               )}
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Lightbox */}
       {selectedPhoto && (
         <div
-          className="fixed inset-0 z-50 bg-black/90 overflow-hidden"
+          className="fixed inset-0 z-50 bg-bg/95 overflow-hidden"
           onClick={() => setSelectedPhoto(null)}
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
@@ -224,10 +219,10 @@ export default function PhotosPage() {
         >
           <button
             onClick={(e) => { e.stopPropagation(); setSelectedPhoto(null); }}
-            className="absolute top-4 right-4 z-10 w-10 h-10 bg-[#1e1e1f] border border-[#383838] rounded-xl flex items-center justify-center hover:bg-[#2b2b2c] transition-colors"
+            className="absolute top-4 right-4 z-10 w-10 h-10 bg-card border border-border flex items-center justify-center hover:bg-muted transition-colors"
             aria-label="Close"
           >
-            <X className="w-6 h-6 text-white" />
+            <X className="w-5 h-5 text-fg" />
           </button>
 
           {/* 3-panel swipe strip */}
@@ -287,6 +282,6 @@ export default function PhotosPage() {
           </div>
         </div>
       )}
-    </main>
+    </Shell>
   );
 }

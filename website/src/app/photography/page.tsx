@@ -1,44 +1,42 @@
-import Sidebar from "@/components/Sidebar";
-import Navigation from "@/components/Navigation";
+import Link from "next/link";
+import Shell from "@/components/term/Shell";
+import Prompt from "@/components/term/Prompt";
+import { profile } from "@/data/profile";
 
 export default function PhotographyPage() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] py-8 px-4 lg:px-8">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-6">
-        <Sidebar />
+    <Shell>
+      <p className="text-xs text-fg-muted">
+        <span className="text-term">~</span> photography
+      </p>
+      <h1 className="mt-1 text-3xl font-bold tracking-tight text-fg">through the lens</h1>
 
-        <div className="flex-1">
-          <div className="bg-[#1e1e1f] border border-[#383838] rounded-3xl overflow-hidden">
-            <Navigation />
-
-            <div className="p-8">
-              <h2 className="text-3xl font-semibold text-white mb-8">Photography</h2>
-
-              {/* Meet me Section */}
-              <div className="mb-12">
-                <h3 className="text-xl font-semibold text-white mb-4">Meet me:</h3>
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  I have over 10 years of experience taking photos, and have a deep passion to capture stories and emotions through the lens. Through a keen eye for detail and creative approach, I focus on the real, the raw, and the beautiful, creating visuals that feel as genuine as the people and places in them.
-                </p>
-
-                <p className="text-gray-300 leading-relaxed">
-                  With a portfolio that reflects my passion for love, laughter, and adventure, I'm dedicated to delivering stunning, timeless photographs that you'll treasure for a lifetime.
-                  Check out my <a href="/gallery" className="text-primary hover:underline">gallery</a> to see some of my work.
-                </p>
-              </div>
-
-              {/* Contact me Section */}
-              <div className="mb-12">
-                <h3 className="text-xl font-semibold text-white mb-4">Book:</h3>
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  I'm always looking for new opportunities to work with people and create stunning, timeless memories.
-                  If you're interested in working with me, please reach out to me on instagram at <a href="https://www.instagram.com/daves.shoots/" className="text-primary hover:underline">@daves.shoots</a>.
-                </p>
-              </div>
-            </div>
-          </div>
+      <section className="mt-12">
+        <Prompt command="cat meet-me.md" />
+        <div className="space-y-4 text-[13.5px] leading-relaxed text-fg">
+          <p>
+            I have over 10 years of experience taking photos, and have a deep passion to capture stories and emotions through the lens. Through a keen eye for detail and creative approach, I focus on the real, the raw, and the beautiful, creating visuals that feel as genuine as the people and places in them.
+          </p>
+          <p>
+            With a portfolio that reflects my passion for love, laughter, and adventure, I&apos;m dedicated to delivering stunning, timeless photographs that you&apos;ll treasure for a lifetime. Check out my{" "}
+            <Link href="/gallery" className="text-term hover:underline">
+              gallery
+            </Link>{" "}
+            to see some of my work.
+          </p>
         </div>
-      </div>
-    </main>
+      </section>
+
+      <section className="mt-12">
+        <Prompt command="cat book.md" />
+        <div className="border border-border bg-card/40 p-5 text-[13.5px] leading-relaxed text-fg-muted sm:p-6">
+          I&apos;m always looking for new opportunities to work with people and create stunning, timeless memories. If you&apos;re interested in working with me, please reach out to me on instagram at{" "}
+          <a href={profile.instagramPhoto} target="_blank" rel="noopener noreferrer" className="text-yellow hover:underline">
+            @daves.shoots
+          </a>
+          .
+        </div>
+      </section>
+    </Shell>
   );
 }

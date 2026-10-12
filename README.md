@@ -8,27 +8,28 @@ Source code for my personal portfolio at [veddave.com](https://veddave.com).
 portfolio/
 ├── website/                  # Next.js frontend
 │   ├── public/
-│   │   ├── Icons/            # SVG icons used on the About page
-│   │   ├── logos/            # Company logos for the Experience timeline
-│   │   ├── profile.jpg       # Sidebar profile photo
-│   │   └── Ved_resume.pdf    # Resume (downloadable from nav)
+│   │   ├── Icons/            # Legacy SVG icons
+│   │   ├── logos/            # Company logos
+│   │   ├── projects/         # Project screenshots
+│   │   ├── profile.jpg       # Source photo for the ASCII portrait
+│   │   └── Ved_resume.pdf    # Resume
+│   ├── scripts/
+│   │   └── gen_ascii_portrait.py  # profile.jpg -> src/data/asciiPortrait.ts
 │   └── src/
 │       ├── app/
-│       │   ├── about/        # About page
-│       │   ├── experience/   # Work experience timeline
+│       │   ├── page.tsx      # Home: hero, contributions, experience, projects, about, hire.me
+│       │   ├── about/        # Redirects to /
+│       │   ├── experience/   # Redirects to /#experience
 │       │   ├── gallery/      # Photo gallery (loads from Firebase)
 │       │   ├── photography/  # Photography intro page
-│       │   └── projects/     # Projects page
+│       │   └── projects/     # Projects grid with filters
 │       ├── components/
-│       │   ├── icons/        # Inline SVG icon components
-│       │   ├── ExperienceCard.tsx
-│       │   ├── ExperienceTimeline.tsx
-│       │   ├── Navigation.tsx
-│       │   ├── PageLayout.tsx
-│       │   ├── ProjectCard.tsx
-│       │   └── Sidebar.tsx
+│       │   ├── term/         # Terminal-theme UI (Shell, Hero, AsciiPortrait, ExperienceLog, ...)
+│       │   └── BrandIcon.tsx
+│       ├── data/             # profile, experience, projects, ASCII portrait content
 │       └── lib/
 │           ├── firebase.ts   # Firebase client config
+│           ├── themes.ts     # Theme ids (void, nord, gruvbox, sepia)
 │           └── utils.ts
 └── firebase/                 # Firebase Cloud Functions
     └── functions/
@@ -89,7 +90,7 @@ Run this skill after updating `public/Ved_resume.pdf` to automatically sync the 
 /update-experience
 ```
 
-The skill reads the PDF, diffs the content against the current `experience/page.tsx`, and updates the `workExperience` data array — preserving any existing company logos and styling.
+The skill reads the PDF, diffs the content against the current `src/data/experience.ts`, and updates the `workExperience` data array — preserving any existing company logos and styling.
 
 A similar manual process applies to the `/projects` page if new projects are added to the resume.
 

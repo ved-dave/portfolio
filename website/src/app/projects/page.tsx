@@ -1,92 +1,10 @@
-import PageLayout from "@/components/PageLayout";
-import ProjectCard from "@/components/ProjectCard";
-
-const projects = [
-  {
-    name: "DJ song queue app",
-    subtitle: "Prototype night club DJ song queue",
-    link: "https://dj-vibez-fake-wedding.vercel.app/",
-    github: "https://github.com/truvailabs/dj-request-app",
-    bullets: [
-      "Prototype song queue app for a Liventful customer.",
-      "Deployed to customer on site (DJ studio) during development and also during the event.",
-      "Collected ~$300 in revenue from the service during the Fake Wedding party hosted on Aug 8, 2026 in Seattle.",
-      "Stack is a Railway container with Node backend, React frontend on Vercel.",
-      "P.S. Don't pay to queue any songs here unless you want to make me a personal donation :P"
-    ],
-    tags: ["React", "Node", "TypeScript", "Stripe"],
-  },
-  {
-    name: "MapLinky",
-    subtitle: "Universal Map Link Converter",
-    link: "https://maplinky.veddave.com",
-    github: "https://github.com/ved-dave/MapLinky",
-    bullets: [
-      "Built MapLinky to solve a simple but annoying problem — shared map links often break across platforms, so this tool automatically detects and converts links between Google Maps, Apple Maps, and OpenStreetMap.",
-      "Backend runs on a Cloudflare Worker with Gemini handling the link parsing; Vanilla JS on the frontend.",
-    ],
-    tags: ["Cloudflare Workers", "Gemini", "JavaScript"],
-  },
-    {
-    name: "World Map Travel Tracker",
-    subtitle: "Shareable and colorable world map",
-    link: "https://traveltracker.veddave.com",
-    github: "https://github.com/ved-dave/traveltracker",
-    bullets: [
-      "Colorable world map with custom colors and login feature to save and share your map with others.",
-      "Implemented with Next.js on frontend, backend uses Supabase for authentication and for storing the shareable map data",
-    ],
-    tags: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS", "Postgres"],
-  },
-  {
-    name: "This Portfolio",
-    subtitle: "Personal Portfolio Website",
-    link: null,
-    github: "https://github.com/ved-dave/portfolio",
-    bullets: [
-      "Designed and built a personal portfolio site to showcase my background, work experience, and photography in a fun and creative way.",
-      "Features a dynamic theme picker, Firebase-powered photo gallery with lazy loading, and a responsive layout.",
-    ],
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Firebase", "Vercel"],
-  },
-  {
-    name: "TinyChain",
-    subtitle: "Blockchain System for IoT Devices — Purdue Senior Capstone",
-    link: null,
-    bullets: [
-      "Forked the open-source Iroha blockchain and stripped it down to run on resource-constrained IoT hardware.",
-      "Ran the whole thing on six Raspberry Pis — used LED triggers to simulate real IoT device behavior and demonstrate the ledger recording live at the Purdue Senior Design Expo.",
-    ],
-    tags: ["C++", "Iroha Blockchain", "Raspberry Pi"],
-  },
-  {
-    name: "TensorFlow Model Garden",
-    subtitle: "Purdue VIP Research Lab, Google",
-    link: null,
-    bullets: [
-      "Partnered with Google through Purdue's VIP program training YOLO-based object detection models; built a new data pipeline to handle YOLOv3 constraints and integrated it into the TensorFlow Model Garden.",
-    ],
-    tags: ["Python", "TensorFlow", "YOLOv3"],
-  },
-  {
-    name: "CAM2 Code Review Tool",
-    subtitle: "Purdue VIP Research Lab",
-    link: null,
-    bullets: [
-      "Built static analysis tools for an open-source code review project — unused code detection, duplicate code flagging, and runtime profiling to help developers catch bugs before they ship.",
-    ],
-    tags: ["Python"],
-  },
-];
+import Shell from "@/components/term/Shell";
+import ProjectGrid from "@/components/term/ProjectGrid";
 
 export default function ProjectsPage() {
   return (
-    <PageLayout title="Projects">
-      <div className="space-y-6">
-        {projects.map((project) => (
-          <ProjectCard key={project.name} {...project} />
-        ))}
-      </div>
-    </PageLayout>
+    <Shell>
+      <ProjectGrid />
+    </Shell>
   );
 }
