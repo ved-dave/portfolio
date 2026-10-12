@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { FileText, Mail } from "lucide-react";
 import BrandIcon from "@/components/BrandIcon";
-import AsciiPortrait from "./AsciiPortrait";
+import Image from "next/image";
 import Modal from "./Modal";
 import Tag from "./Tag";
 import { profile } from "@/data/profile";
@@ -21,7 +21,22 @@ export default function Hero() {
   return (
     <section className="relative grid gap-10 sm:grid-cols-[minmax(0,300px)_1fr] sm:gap-12">
       <div className="flex flex-col items-center gap-5">
-        <AsciiPortrait className="max-w-full" />
+        <figure className="w-full max-w-[300px] border border-border bg-card">
+          <figcaption className="flex items-center gap-1.5 border-b border-border px-3 py-2 text-[11px] text-fg-muted">
+            <span className="h-2 w-2 rounded-full bg-red/70" />
+            <span className="h-2 w-2 rounded-full bg-yellow/70" />
+            <span className="h-2 w-2 rounded-full bg-term/70" />
+            <span className="ml-2">~/ved.jpg</span>
+          </figcaption>
+          <Image
+            src="/profile.jpg"
+            alt="Ved Dave"
+            width={600}
+            height={600}
+            priority
+            className="block aspect-square w-full object-cover"
+          />
+        </figure>
         <div className="flex gap-2 text-xs">
           <button
             type="button"

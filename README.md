@@ -11,10 +11,8 @@ portfolio/
 │   │   ├── Icons/            # Legacy SVG icons
 │   │   ├── logos/            # Company logos
 │   │   ├── projects/         # Project screenshots
-│   │   ├── profile.jpg       # Source photo for the ASCII portrait
+│   │   ├── profile.jpg       # Profile photo
 │   │   └── Ved_resume.pdf    # Resume
-│   ├── scripts/
-│   │   └── gen_ascii_portrait.py  # profile.jpg -> src/data/asciiPortrait.ts
 │   └── src/
 │       ├── app/
 │       │   ├── page.tsx      # Home: hero, contributions, experience, projects, about, hire.me
@@ -24,9 +22,9 @@ portfolio/
 │       │   ├── photography/  # Photography intro page
 │       │   └── projects/     # Projects grid with filters
 │       ├── components/
-│       │   ├── term/         # Terminal-theme UI (Shell, Hero, AsciiPortrait, ExperienceLog, ...)
+│       │   ├── term/         # Terminal-theme UI (Shell, Hero, ExperienceLog, ProjectList, ...)
 │       │   └── BrandIcon.tsx
-│       ├── data/             # profile, experience, projects, ASCII portrait content
+│       ├── data/             # profile, experience, projects content
 │       └── lib/
 │           ├── firebase.ts   # Firebase client config
 │           ├── themes.ts     # Theme ids (void, nord, gruvbox, sepia)

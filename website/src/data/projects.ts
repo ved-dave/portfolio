@@ -58,7 +58,7 @@ export const projects: Project[] = [
     github: "https://github.com/ved-dave/portfolio",
     bullets: [
       "Designed and built a personal portfolio site to showcase my background, work experience, and photography in a fun and creative way.",
-      "Terminal-inspired design with four switchable color themes, an ASCII portrait, a live GitHub contribution graph, and a Firebase-powered photo gallery.",
+      "Terminal-inspired design with four switchable color themes, a live GitHub contribution graph, and a Firebase-powered photo gallery.",
     ],
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Firebase", "Vercel"],
     kind: "web",
