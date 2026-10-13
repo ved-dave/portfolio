@@ -55,14 +55,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="relative min-w-0">
-        <div
-          className="absolute -top-2 right-0 hidden rotate-[-14deg] border-2 border-double border-term/70 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-term/90 sm:block"
-          aria-hidden="true"
-        >
-          {profile.stamp}
-        </div>
-
+      <div className="min-w-0">
         <p className="text-xs text-fg-muted">
           <span className="text-term">~</span> whoami
         </p>
