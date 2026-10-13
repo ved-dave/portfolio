@@ -1,5 +1,5 @@
-import Sidebar from "@/components/Sidebar";
-import Navigation from "@/components/Navigation";
+import Sidebar from "@/components/classic/Sidebar";
+import Navigation from "@/components/classic/Navigation";
 
 interface PageLayoutProps {
   title: string;

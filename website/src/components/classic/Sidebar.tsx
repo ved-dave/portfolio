@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect, useId } from "react";
-import { Mail, Calendar, MapPin, X, Menu, ChevronDown, User } from "lucide-react";
-import BrandIcon from "./BrandIcon";
+import { Mail, Calendar, MapPin, Phone, X, Menu, ChevronDown, User } from "lucide-react";
+import BrandIcon from "@/components/BrandIcon";
+import { profile } from "@/data/profile";
 
 const THEME_OPTIONS = [
   { name: "Yellow", color: "#F6FF00" },
@@ -171,6 +172,23 @@ export default function Sidebar() {
                 <p className="text-xs text-gray-400 uppercase mb-1">Email</p>
                 <a href="mailto:me@veddave.com" className="text-sm text-white hover:text-primary">
                   me@veddave.com
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <div className="w-10 h-10 bg-[#2b2b2c] rounded-xl flex items-center justify-center">
+                <Phone className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <p className="text-xs text-gray-400 uppercase mb-1">Book a call</p>
+                <a
+                  href={profile.booking}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-white hover:text-primary"
+                >
+                  cal.com/veddave
                 </a>
               </div>
             </div>

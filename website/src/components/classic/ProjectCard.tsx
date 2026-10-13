@@ -1,5 +1,5 @@
 import { ExternalLink } from "lucide-react";
-import BrandIcon from "./BrandIcon";
+import BrandIcon from "@/components/BrandIcon";
 
 interface ProjectCardProps {
   name: string;

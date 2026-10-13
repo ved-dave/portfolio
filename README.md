@@ -8,32 +8,45 @@ Source code for my personal portfolio at [veddave.com](https://veddave.com).
 portfolio/
 ├── website/                  # Next.js frontend
 │   ├── public/
-│   │   ├── Icons/            # SVG icons used on the About page
-│   │   ├── logos/            # Company logos for the Experience timeline
-│   │   ├── profile.jpg       # Sidebar profile photo
-│   │   └── Ved_resume.pdf    # Resume (downloadable from nav)
+│   │   ├── Icons/            # Legacy SVG icons
+│   │   ├── logos/            # Company logos
+│   │   ├── projects/         # Project screenshots
+│   │   ├── profile.jpg       # Profile photo
+│   │   └── Ved_resume.pdf    # Resume
 │   └── src/
-│       ├── app/
-│       │   ├── about/        # About page
-│       │   ├── experience/   # Work experience timeline
+│       ├── app/              # Routes: each page renders the design picked by SITE_DESIGN
+│       │   ├── page.tsx      # terminal: home page · classic: redirects to /about
+│       │   ├── about/        # classic: about page · terminal: redirects to /
+│       │   ├── experience/   # classic: timeline · terminal: redirects to /#experience
 │       │   ├── gallery/      # Photo gallery (loads from Firebase)
 │       │   ├── photography/  # Photography intro page
-│       │   └── projects/     # Projects page
+│       │   └── projects/     # Projects list / grid
 │       ├── components/
-│       │   ├── icons/        # Inline SVG icon components
-│       │   ├── ExperienceCard.tsx
-│       │   ├── ExperienceTimeline.tsx
-│       │   ├── Navigation.tsx
-│       │   ├── PageLayout.tsx
-│       │   ├── ProjectCard.tsx
-│       │   └── Sidebar.tsx
+│       │   ├── classic/      # Classic design (Sidebar, Navigation, cards, pages/)
+│       │   ├── term/         # Terminal design (Shell, Hero, ExperienceLog, pages/, ...)
+│       │   ├── PhotoGallery.tsx  # Gallery logic shared by both designs
+│       │   └── BrandIcon.tsx
+│       ├── data/             # profile, experience, projects content
 │       └── lib/
+│           ├── design.ts     # Reads SITE_DESIGN (classic | terminal)
 │           ├── firebase.ts   # Firebase client config
+│           ├── themes.ts     # Theme ids (void, nord, gruvbox, sepia)
 │           └── utils.ts
 └── firebase/                 # Firebase Cloud Functions
     └── functions/
         └── src/index.ts      # Storage trigger functions
 ```
+
+## Site design switch
+
+The site ships two designs from the same content (`website/src/data/`). The `SITE_DESIGN` environment variable picks which one is built:
+
+| `SITE_DESIGN` | Result |
+|---|---|
+| unset or `classic` | Original sidebar design (`/about`, `/experience`, `/projects`, ...) |
+| `terminal` | Terminal-style single-page design with four colour themes |
+
+On Vercel, set it under **Settings → Environment Variables**, per environment (e.g. `terminal` for Preview, `classic` for Production), then redeploy — the value is read at build time. Locally, add it to `website/.env.local`.
 
 ## Stack
 
@@ -89,7 +102,7 @@ Run this skill after updating `public/Ved_resume.pdf` to automatically sync the 
 /update-experience
 ```
 
-The skill reads the PDF, diffs the content against the current `experience/page.tsx`, and updates the `workExperience` data array — preserving any existing company logos and styling.
+The skill reads the PDF, diffs the content against the current `src/data/experience.ts`, and updates the `workExperience` data array — preserving any existing company logos and styling.
 
 A similar manual process applies to the `/projects` page if new projects are added to the resume.
 

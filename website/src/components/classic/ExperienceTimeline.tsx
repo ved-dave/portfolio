@@ -1,4 +1,4 @@
-import ExperienceCard from "@/components/ExperienceCard";
+import ExperienceCard from "@/components/classic/ExperienceCard";
 
 interface ExperienceEntry {
   company: string;

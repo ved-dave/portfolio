@@ -1,14 +1,8 @@
-"use client";
+import { redirect } from "next/navigation";
+import HomePage from "@/components/term/pages/HomePage";
+import { siteDesign } from "@/lib/design";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-
-export default function Home() {
-  const router = useRouter();
-
-  useEffect(() => {
-    router.push("/about");
-  }, [router]);
-
-  return null;
+export default function Page() {
+  if (siteDesign === "classic") redirect("/about");
+  return <HomePage />;
 }
