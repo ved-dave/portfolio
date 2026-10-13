@@ -38,8 +38,8 @@ export const profile = {
   stack: [
     { label: "typescript", color: "blue" },
     { label: "python", color: "yellow" },
-    { label: "react", color: "aqua" },
-    { label: "next.js", color: "fg" },
+    { label: "C#", color: "aqua" },
+    { label: "react", color: "fg" },
     { label: "node", color: "term" },
     { label: "fastapi", color: "aqua" },
     { label: "langchain", color: "purple" },
