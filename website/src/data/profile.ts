@@ -1,9 +1,16 @@
+// Drives the clock in the terminal footer. Change `currentCity` when I move.
+const cities = {
+  seattle: "America/Los_Angeles",
+  "new york": "America/New_York",
+} as const;
+const currentCity: keyof typeof cities = "new york";
+
 export const profile = {
   name: "ved dave",
   handle: "ved-dave",
   email: "me@veddave.com",
   location: "seattle ⇔ nyc",
-  timeZone: "America/Los_Angeles",
+  clock: { city: currentCity, timeZone: cities[currentCity] },
   tagline: "engineer · founder · photographer",
   intro:
     "I'm a software engineer and AI consultant.",
@@ -14,6 +21,7 @@ export const profile = {
   },
   stamp: "open to projects",
   resume: "/Ved_resume.pdf",
+  booking: "https://cal.com/veddave",
   instagramPhoto: "https://www.instagram.com/daves.shoots/",
   travelMap: "https://traveltracker.veddave.com/ved",
   about: [

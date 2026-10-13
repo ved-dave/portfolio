@@ -67,7 +67,7 @@ export default function Home() {
       </section>
 
       <section className="mt-16">
-        <Prompt command="cat hire.me" id="hire" />
+        <Prompt command="cat email.me" id="email" />
         <HireForm />
       </section>
     </Shell>

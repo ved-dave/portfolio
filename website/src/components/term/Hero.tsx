@@ -95,7 +95,7 @@ export default function Hero() {
               <BrandIcon name={s.name} className="h-[17px] w-[17px]" />
             </a>
           ))}
-          <a href="#hire" aria-label="email" className="p-2 text-fg-muted transition-colors hover:text-term">
+          <a href="#email" aria-label="email" className="p-2 text-fg-muted transition-colors hover:text-term">
             <Mail className="h-[18px] w-[18px]" />
           </a>
         </div>
@@ -110,10 +110,12 @@ export default function Hero() {
             <FileText className="h-3.5 w-3.5" /> resume
           </a>
           <a
-            href="#hire"
+            href={profile.booking}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 border border-term/60 px-3 py-1.5 text-term transition-colors hover:bg-term/10"
           >
-            work with me
+            book a time
           </a>
         </div>
       </div>
