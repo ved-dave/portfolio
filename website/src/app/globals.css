@@ -3,8 +3,32 @@
 @tailwind utilities;
 
 @layer base {
-  :root,
-  [data-theme="void"] {
+  [data-design="classic"] {
+    --background: 0 0% 11%;
+    --foreground: 0 0% 98%;
+    --card: hsl(0 0% 13%);
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 13%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 62 100% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: hsl(0 0% 18%);
+    --muted-foreground: 0 0% 70%;
+    --accent: 62 100% 50%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: hsl(0 0% 18%);
+    --input: 0 0% 18%;
+    --ring: 62 100% 50%;
+    --radius: 0.75rem;
+  }
+
+  [data-design="terminal"],
+  [data-design="terminal"][data-theme="void"] {
+    --radius: 0.5rem;
     --bg: #0d0e0f;
     --card: #131415;
     --muted: #1a1c1e;
@@ -27,7 +51,7 @@
     color-scheme: dark;
   }
 
-  [data-theme="nord"] {
+  [data-design="terminal"][data-theme="nord"] {
     --bg: #2e3440;
     --card: #3b4252;
     --muted: #353c4a;
@@ -50,7 +74,7 @@
     color-scheme: dark;
   }
 
-  [data-theme="gruvbox"] {
+  [data-design="terminal"][data-theme="gruvbox"] {
     --bg: #fbf1c7;
     --card: #f4e8be;
     --muted: #efe2b4;
@@ -73,7 +97,7 @@
     color-scheme: light;
   }
 
-  [data-theme="sepia"] {
+  [data-design="terminal"][data-theme="sepia"] {
     --bg: #f4ecd8;
     --card: #ece2c9;
     --muted: #e7dcc0;
@@ -100,18 +124,24 @@
     border-color: var(--border);
   }
 
-  html {
+  [data-design="classic"] body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans), "Poppins", sans-serif;
+  }
+
+  html[data-design="terminal"] {
     scroll-behavior: smooth;
   }
 
-  body {
+  [data-design="terminal"] body {
     background: var(--bg);
     color: var(--fg);
     font-family: var(--font-mono), ui-monospace, monospace;
     transition: background-color 0.2s ease, color 0.2s ease;
   }
 
-  ::selection {
+  [data-design="terminal"] ::selection {
     background: var(--term);
     color: var(--bg);
   }

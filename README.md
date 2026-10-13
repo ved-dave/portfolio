@@ -14,18 +14,21 @@ portfolio/
 │   │   ├── profile.jpg       # Profile photo
 │   │   └── Ved_resume.pdf    # Resume
 │   └── src/
-│       ├── app/
-│       │   ├── page.tsx      # Home: hero, contributions, experience, projects, about, hire.me
-│       │   ├── about/        # Redirects to /
-│       │   ├── experience/   # Redirects to /#experience
+│       ├── app/              # Routes: each page renders the design picked by SITE_DESIGN
+│       │   ├── page.tsx      # terminal: home page · classic: redirects to /about
+│       │   ├── about/        # classic: about page · terminal: redirects to /
+│       │   ├── experience/   # classic: timeline · terminal: redirects to /#experience
 │       │   ├── gallery/      # Photo gallery (loads from Firebase)
 │       │   ├── photography/  # Photography intro page
-│       │   └── projects/     # Projects grid with filters
+│       │   └── projects/     # Projects list / grid
 │       ├── components/
-│       │   ├── term/         # Terminal-theme UI (Shell, Hero, ExperienceLog, ProjectList, ...)
+│       │   ├── classic/      # Classic design (Sidebar, Navigation, cards, pages/)
+│       │   ├── term/         # Terminal design (Shell, Hero, ExperienceLog, pages/, ...)
+│       │   ├── PhotoGallery.tsx  # Gallery logic shared by both designs
 │       │   └── BrandIcon.tsx
 │       ├── data/             # profile, experience, projects content
 │       └── lib/
+│           ├── design.ts     # Reads SITE_DESIGN (classic | terminal)
 │           ├── firebase.ts   # Firebase client config
 │           ├── themes.ts     # Theme ids (void, nord, gruvbox, sepia)
 │           └── utils.ts
@@ -33,6 +36,17 @@ portfolio/
     └── functions/
         └── src/index.ts      # Storage trigger functions
 ```
+
+## Site design switch
+
+The site ships two designs from the same content (`website/src/data/`). The `SITE_DESIGN` environment variable picks which one is built:
+
+| `SITE_DESIGN` | Result |
+|---|---|
+| unset or `classic` | Original sidebar design (`/about`, `/experience`, `/projects`, ...) |
+| `terminal` | Terminal-style single-page design with four colour themes |
+
+On Vercel, set it under **Settings → Environment Variables**, per environment (e.g. `terminal` for Preview, `classic` for Production), then redeploy — the value is read at build time. Locally, add it to `website/.env.local`.
 
 ## Stack
 
