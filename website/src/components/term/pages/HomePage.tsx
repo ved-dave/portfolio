@@ -13,9 +13,18 @@ export default function Home() {
     <Shell>
       <Hero />
 
-      <div className="mt-16">
+      <div hidden className="mt-16">
         <ContributionGraph />
       </div>
+
+      <section className="mt-16">
+        <Prompt command="cat about-me.md" id="about" />
+        <div className="space-y-3 border border-border bg-card/40 p-5 text-[13.5px] leading-relaxed text-fg-muted sm:p-6">
+          {profile.about.map((p) => (
+            <p key={p}>{p}</p>
+          ))}
+        </div>
+      </section>
 
       <section className="mt-16">
         <Prompt command="cat experience.log" id="experience" />
@@ -33,15 +42,6 @@ export default function Home() {
           }
         />
         <ProjectList />
-      </section>
-
-      <section className="mt-16">
-        <Prompt command="cat about-me.md" id="about" />
-        <div className="space-y-3 border border-border bg-card/40 p-5 text-[13.5px] leading-relaxed text-fg-muted sm:p-6">
-          {profile.about.map((p) => (
-            <p key={p}>{p}</p>
-          ))}
-        </div>
       </section>
 
       <section className="mt-16">

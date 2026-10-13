@@ -6,7 +6,7 @@ export const profile = {
   timeZone: "America/Los_Angeles",
   tagline: "engineer · founder · photographer",
   intro:
-    "I'm a software engineer and founder helping early stage startups and small businesses scale out their vision with AI — and a photographer on the side.",
+    "I'm a software engineer and AI consultant.",
   building: {
     name: "truvai labs",
     href: "https://truvai.com",
