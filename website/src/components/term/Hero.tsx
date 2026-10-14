@@ -140,14 +140,13 @@ export default function Hero() {
             </p>
           </div>
           <div>
-            <p className="mb-1.5 text-[11px] text-fg-muted">notable</p>
+            <p className="mb-1.5 text-[11px] text-fg-muted">notable projects</p>
             <ul className="space-y-1">
               {notable.map((p) => (
                 <li key={p.name} className="flex items-baseline justify-between gap-3">
                   <a href={p.link ?? undefined} target="_blank" rel="noopener noreferrer" className="text-fg hover:text-term">
                     {p.name.toLowerCase()}
                   </a>
-                  <span className="truncate text-fg-muted">{p.subtitle.toLowerCase()}</span>
                 </li>
               ))}
             </ul>

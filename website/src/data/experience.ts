@@ -69,8 +69,9 @@ export const workExperience: ExperienceEntry[] = [
     team: "Dynamics 365 CRM, Omnichannel Messaging",
     start: "Aug 2022",
     end: "Mar 2026",
+    link: "https://www.microsoft.com/dynamics-365",
     bullets: [
-      "Piloted org-wide agentic QA automation initiative using LLM-driven workflows, achieving 100% backend API E2E test coverage (400+ test cases) across team and sister teams — reduced QA costs by 70% and improved service reliability from 4 to 5 nines.",
+      "Deployed QA testing agents to achieve 100% backend API E2E test coverage (400+ test cases) across the Omnichannel org — reduced QA costs by 70% and improved service reliability to 4 nines.",
       "Led implementation of attachment/file sharing service and public Messaging APIs as part of large-scale CRM SaaS infrastructure migration to BAP Core Services.",
       "Partnered with Microsoft Dynamics' highest-priority customers on Solution Engineering – swift delivery of features from direct user feedback and quick mitigation and communication during on-call incidents."
     ],
@@ -83,6 +84,7 @@ export const workExperience: ExperienceEntry[] = [
     team: "Dynamics 365 CRM, Omnichannel Messaging",
     start: "May 2021",
     end: "Aug 2021",
+    link: "https://www.microsoft.com/dynamics-365",
     bullets: [
       "Built APIs bridging Dynamics Omnichannel and Bot Framework to enable end-to-end messaging through Microsoft Teams agents.",
       "Designed and implemented a Teams application interfacing with the Omnichannel APIs; demonstrated proof of concept at MS internal expo.",
