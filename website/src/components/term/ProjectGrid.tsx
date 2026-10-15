@@ -37,7 +37,7 @@ function Preview({ project }: { project: Project }) {
 }
 
 function Card({ project }: { project: Project }) {
-  const href = project.link ?? project.github ?? undefined;
+  const href = project.link || project.github || undefined;
   return (
     <article className="group flex flex-col border border-border bg-card/40 transition-colors hover:border-fg-muted/50">
       <a href={href} target="_blank" rel="noopener noreferrer" className="block overflow-hidden border-b border-border" tabIndex={-1}>
@@ -74,8 +74,8 @@ function Card({ project }: { project: Project }) {
 export default function ProjectGrid() {
   const [filter, setFilter] = useState<Filter>("all");
   const visible = projects.filter((p) => filter === "all" || p.kind === filter);
-  const featured = visible.filter((p) => p.image);
-  const other = visible.filter((p) => !p.image);
+  const featured = visible.filter((p) => p.notable === true);
+  const other = visible.filter((p) => p.notable !== true);
 
   return (
     <div>

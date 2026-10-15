@@ -16,7 +16,7 @@ type Panel = "tldr" | "offhours" | null;
 export default function Hero() {
   const [panel, setPanel] = useState<Panel>(null);
   const current = workExperience.filter((e) => e.end === "Present");
-  const notable = projects.filter((p) => p.link).slice(0, 3);
+  const notable = projects.filter((p) => p.notable === true);
 
   return (
     <section className="relative grid gap-10 sm:grid-cols-[minmax(0,300px)_1fr] sm:gap-12">
@@ -138,13 +138,17 @@ export default function Hero() {
               software engineer <span className="text-fg-muted">@</span> <span className="text-blue">microsoft</span>{" "}
               <span className="text-fg-muted">· dynamics 365</span>
             </p>
+            <p className="text-fg">
+              forward deployed engineer <span className="text-fg-muted">@</span> <span className="text-blue">ama</span>{" "}
+              <span className="text-fg-muted">· founding team</span>
+            </p>
           </div>
           <div>
             <p className="mb-1.5 text-[11px] text-fg-muted">notable projects</p>
             <ul className="space-y-1">
               {notable.map((p) => (
                 <li key={p.name} className="flex items-baseline justify-between gap-3">
-                  <a href={p.link ?? undefined} target="_blank" rel="noopener noreferrer" className="text-fg hover:text-term">
+                  <a href={p.link || p.github || undefined} target="_blank" rel="noopener noreferrer" className="text-fg hover:text-term">
                     {p.name.toLowerCase()}
                   </a>
                 </li>

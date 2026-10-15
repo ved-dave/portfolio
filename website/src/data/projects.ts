@@ -3,6 +3,7 @@ export interface Project {
   subtitle: string;
   bullets: string[];
   link?: string | null;
+  notable?: boolean | false;
   github?: string | null;
   tags: string[];
   image?: string;
@@ -11,10 +12,25 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    name: "Manufacturer Scraper Agents",
+    subtitle: "Agentic evaluation experiment",
+    link: null,
+    notable: true,
+    github: "https://github.com/ved-dave/manufacturer-scraper-eval",
+    bullets: [
+      "Built scrapers based on a set of datasets for a real client problem.",
+      "Performed evals on the scraper and built site specific profiles from a small dataset to give agents context to navigate.",
+      "Designed prototype system for this - part agentic, part deterministic."
+    ],
+    tags: ["Python", "Evals", "Agents"],
+    kind: "research",
+  },
+  {
     name: "DJ song queue app",
     subtitle: "Prototype night club DJ song queue",
-    link: "https://dj-vibez-fake-wedding.vercel.app/",
+    link: "",
     github: "https://github.com/truvailabs/dj-request-app",
+    notable: true,
     bullets: [
       "Prototype song queue app for a Liventful customer.",
       "Deployed to customer on site (DJ studio) during development and also during the event.",
@@ -30,6 +46,7 @@ export const projects: Project[] = [
     subtitle: "Universal Map Link Converter",
     link: "https://maplinky.veddave.com",
     github: "https://github.com/ved-dave/MapLinky",
+    notable: true,
     bullets: [
       "Built MapLinky to solve a simple but annoying problem — shared map links often break across platforms, so this tool automatically detects and converts links between Google Maps, Apple Maps, and OpenStreetMap.",
       "Backend runs on a Cloudflare Worker with Gemini handling the link parsing; Vanilla JS on the frontend.",
@@ -43,6 +60,7 @@ export const projects: Project[] = [
     subtitle: "Shareable and colorable world map",
     link: "https://traveltracker.veddave.com",
     github: "https://github.com/ved-dave/traveltracker",
+    notable: true,
     bullets: [
       "Colorable world map with custom colors and login feature to save and share your map with others.",
       "Implemented with Next.js on frontend, backend uses Supabase for authentication and for storing the shareable map data",
@@ -54,11 +72,12 @@ export const projects: Project[] = [
   {
     name: "This Portfolio",
     subtitle: "Personal Portfolio Website",
-    link: null,
+    link: "https://veddave.com",
     github: "https://github.com/ved-dave/portfolio",
     bullets: [
       "Designed and built a personal portfolio site to showcase my background, work experience, and photography in a fun and creative way.",
-      "Features switchable color themes, a Firebase-powered photo gallery with lazy loading, and a responsive layout.",
+      "Contains two themes, controlled by a SITE_DESIGN environment variable.",
+      "Firebase-powered photo gallery with lazy loading, and a responsive layout.",
     ],
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Firebase", "Vercel"],
     kind: "web",

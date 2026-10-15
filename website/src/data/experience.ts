@@ -18,7 +18,7 @@ export const workExperience: ExperienceEntry[] = [
     role: "Forward Deployed Engineer",
     team: "Founding Team",
     start: "Sept 2026",
-    end: "Present",
+    end: "Oct 2026",
     link: "https://amahq.com",
     bullets: [
       'Standardized execution paths and evals to improve consistency for their signature AI tool "Mycel".',
