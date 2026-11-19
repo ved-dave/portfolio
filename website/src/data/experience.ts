@@ -24,6 +24,23 @@ export const workExperience: ExperienceEntry[] = [
       'Building in digital marketing.'
     ],
   },
+    {
+    company: "Truvai Labs",
+    logo: "",
+    logoAlt: "Truvai",
+    role: "Founder / AI Consultant",
+    team: "Deployed AI and software studio",
+    start: "Apr 2026",
+    end: "Present",
+    link: "https://truvai.com",
+    bullets: [
+      "Engineering consultancy firm. Notable technical engagements and products:",
+      "Ama - Agentic environmental compliance.",
+      "Stealth - Agentic DJ setlist curation.",
+      "Haidar Cuts - Custom booking and CRM platform for Seattle area barber.",
+      "DJ Vibez - Live DJ tipping service for song requests."
+    ],
+  },
   {
     company: "Ama Earth Group",
     logo: "/logos/ama.png",
@@ -39,23 +56,6 @@ export const workExperience: ExperienceEntry[] = [
       "Accelerated engineer velocity by 8X using this workflow, with notifications using their Slack Workspace.",
       "Performed pre-launch scale testing to identify resource contention issues under concurrent load.",
       "Migrated Mycel to multi-service system to decouple core service performance from impact from intensive tasks."
-    ],
-  },
-  {
-    company: "Truvai Labs",
-    logo: "",
-    logoAlt: "Truvai",
-    role: "Founder / Consultant",
-    team: "Deployed AI and software studio",
-    start: "Apr 2026",
-    end: "Present",
-    link: "https://truvai.com",
-    bullets: [
-      "Engineering consultancy firm. Notable technical engagements and products:",
-      "Ama - Agentic environmental compliance.",
-      "Stealth - Agentic DJ setlist curation.",
-      "Haidar Cuts - Custom booking and CRM platform for Seattle area barber.",
-      "DJ Vibez - Live DJ tipping service for song requests."
     ],
   },
   {
