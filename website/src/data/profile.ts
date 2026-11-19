@@ -25,7 +25,8 @@ export const profile = {
   travelMap: "https://traveltracker.veddave.com/ved",
   about: [
     "I'm a Software Engineer, Founder, and Photographer based between Seattle and New York City.",
-    "I run my own engineering consultancy firm where I help early stage startups and small businesses scale out their vision with AI and technology. I was formerly at Microsoft building out agentic QA testing pipelines and core backend infra for the Dynamics 365. I also created a customer-personalized event operations platform for indie event hosts and organizers.",
+    "I currently work at WITHIN as a full stack engineer building in the digital marketing space.",
+    "I also run my own engineering consultancy firm where I help early stage startups and small businesses scale out their vision with AI and technology. I was formerly at Microsoft building out agentic QA testing pipelines and core backend infra for the Dynamics 365. I also created a customer-personalized event operations platform for indie event hosts and organizers.",
     "My expertise spans applied AI, full stack development, and solution/forward deployed engineering. Please explore my portfolio to learn more about me and my work :)",
   ],
   socials: [

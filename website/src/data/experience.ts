@@ -12,6 +12,19 @@ export interface ExperienceEntry {
 
 export const workExperience: ExperienceEntry[] = [
   {
+    company: "WITHIN",
+    logo: "",
+    logoAlt: "WITHIN",
+    role: "Senior Software Engineer",
+    team: "Full Stack Team",
+    start: "Nov 2026",
+    end: "Present",
+    link: "https://within.co",
+    bullets: [
+      'Building in digital marketing.'
+    ],
+  },
+  {
     company: "Ama Earth Group",
     logo: "/logos/ama.png",
     logoAlt: "AMA",
