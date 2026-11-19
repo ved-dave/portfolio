@@ -62,6 +62,13 @@ export default function Hero() {
         <h1 className="mt-1 text-3xl font-bold tracking-tight text-fg sm:text-[2.1rem]">{profile.name}</h1>
         <p className="mt-4 max-w-lg text-[14px] leading-relaxed text-fg-muted">{profile.intro}</p>
         <p className="mt-4 text-[14px] text-fg-muted">
+          <span className="text-term">▸</span> working at{" "}
+          <a href={profile.working.href} target="_blank" rel="noopener noreferrer" className="font-semibold text-yellow hover:underline">
+            {profile.working.name}
+          </a>{" "}
+          — {profile.working.note}
+        </p>
+        <p className="mt-1 text-[14px] text-fg-muted">
           <span className="text-term">▸</span> building{" "}
           <a href={profile.building.href} target="_blank" rel="noopener noreferrer" className="font-semibold text-yellow hover:underline">
             {profile.building.name}

@@ -14,6 +14,11 @@ export const profile = {
   tagline: "engineer · founder · photographer",
   intro:
     "I'm a software engineer and AI consultant.",
+  working: {
+    name: "within",
+    href: "https://within.co",
+    note: "senior software engineer",
+  },
   building: {
     name: "truvai labs",
     href: "https://truvai.com",
