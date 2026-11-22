@@ -13,7 +13,7 @@ export interface ExperienceEntry {
 export const workExperience: ExperienceEntry[] = [
   {
     company: "WITHIN",
-    logo: "",
+    logo: "/logos/within.png",
     logoAlt: "WITHIN",
     role: "Senior Software Engineer",
     team: "Full Stack Team",
@@ -26,7 +26,7 @@ export const workExperience: ExperienceEntry[] = [
   },
     {
     company: "Truvai Labs",
-    logo: "",
+    logo: "/logos/truvai.png",
     logoAlt: "Truvai",
     role: "Founder / AI Consultant",
     team: "Deployed AI and software studio",
@@ -36,8 +36,9 @@ export const workExperience: ExperienceEntry[] = [
     bullets: [
       "Engineering consultancy firm. Notable technical engagements and products:",
       "Ama - Agentic environmental compliance.",
-      "Stealth - Agentic DJ setlist curation.",
       "Haidar Cuts - Custom booking and CRM platform for Seattle area barber.",
+      "Stealth - Agentic DJ setlist curation.",
+      "Liventful - Event ops and ticketing platform",
       "DJ Vibez - Live DJ tipping service for song requests."
     ],
   },
@@ -56,22 +57,6 @@ export const workExperience: ExperienceEntry[] = [
       "Accelerated engineer velocity by 8X using this workflow, with notifications using their Slack Workspace.",
       "Performed pre-launch scale testing to identify resource contention issues under concurrent load.",
       "Migrated Mycel to multi-service system to decouple core service performance from impact from intensive tasks."
-    ],
-  },
-  {
-    company: "Liventful",
-    logo: "/logos/liventful.png",
-    logoAlt: "Liventful",
-    role: "Founder",
-    team: "",
-    start: "Apr 2026",
-    end: "Aug 2026",
-    link: "https://liventful.com",
-    bullets: [
-      "Building a mobile-first event operations platform for independent event hosts.",
-      "Custom whitelabeled branding to empower hosts to own their own community.",
-      "Ticketing and AI powered analytics to support growing creators and organizers.",
-      "Stack is a split between Python (FastAPI, LangChain integration) and TypeScript (Node) for backend, and React TypeScript for frontend."
     ],
   },
   {

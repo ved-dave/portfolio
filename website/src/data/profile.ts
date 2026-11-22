@@ -17,7 +17,7 @@ export const profile = {
   working: {
     name: "within",
     href: "https://within.co",
-    note: "senior software engineer",
+    note: "full stack engineer",
   },
   building: {
     name: "truvai labs",

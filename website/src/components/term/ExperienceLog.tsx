@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { workExperience } from "@/data/experience";
 
@@ -21,7 +22,13 @@ export default function ExperienceLog() {
           const hidden = e.bullets.length - 1;
           return (
             <li key={e.company + e.role} className="relative pb-9 pl-7 last:pb-0">
-              <span className={`absolute -left-[4.5px] top-[5px] h-2 w-2 rounded-full ${DOTS[i % DOTS.length]}`} />
+              {e.logo ? (
+                <span className="absolute -left-[14.5px] -top-1 flex h-7 w-7 items-center justify-center bg-bg">
+                  <Image src={e.logo} alt={e.logoAlt} width={28} height={28} className="h-full w-full object-contain" />
+                </span>
+              ) : (
+                <span className={`absolute -left-[4.5px] top-[5px] h-2 w-2 rounded-full ${DOTS[i % DOTS.length]}`} />
+              )}
               <div className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
                 <p className={`text-[13px] ${TEXT[i % TEXT.length]}`}>
                   {e.role.toLowerCase()} —{" "}
