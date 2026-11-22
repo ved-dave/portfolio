@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { profile } from "@/data/profile";
+import { checkContactRateLimit, clientIp } from "@/lib/rateLimit";
 
 const FROM = process.env.CONTACT_FROM ?? "Portfolio <contact@send.veddave.com>";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -36,6 +37,15 @@ export async function POST(req: Request) {
   }
   if (from && (!EMAIL_RE.test(from) || from.length > 254)) {
     return NextResponse.json({ error: "That email address doesn't look right." }, { status: 400 });
+  }
+
+  const limit = await checkContactRateLimit(clientIp(req), from || undefined);
+  if (!limit.ok) {
+    const minutes = Math.ceil(limit.retryAfter / 60);
+    return NextResponse.json(
+      { error: `Too many messages. Try again in ${minutes} minute${minutes === 1 ? "" : "s"}.` },
+      { status: 429, headers: { "Retry-After": String(limit.retryAfter) } },
+    );
   }
 
   const resend = new Resend(apiKey);
